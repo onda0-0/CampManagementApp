@@ -32,7 +32,7 @@ public class StudentView {
             int choice = consoleIO.getIntInput("관리 항목을 선택하세요...");
             switch (choice) {
                 case 1:
-                    //createStudentProcess();
+                    createStudentProcess();
                     break;
                 case 2:
                     //displayAllStudents();
@@ -60,14 +60,15 @@ public class StudentView {
         consoleIO.print("4. 메인 화면 이동");
     }
 
-    /*// 1번(수강생 등록) 선택후 요구되는 입출력 처리(비지니스로직은 studentManager처리후 처리)
+    // 1번(수강생 등록) 선택후 요구되는 입출력 처리(비지니스로직은 studentManager처리후 처리)
         private void createStudentProcess() {
         consoleIO.print("\n수강생을 등록합니다...");
         String studentName = consoleIO.getStringInput("수강생 이름 입력: ");
         List<String> allSubjectNames = studentManager.selectSubjectNamesList();
-        studentManager.createStudent(studentName, allSubjectNames);
+        String studentStatus=studentManager.getStatusInput();
+        studentManager.createStudent(studentName, allSubjectNames, studentStatus);
         consoleIO.print("수강생 등록 성공!\n");
-    }*/
+    }
 
 
 

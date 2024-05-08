@@ -61,11 +61,11 @@ public class Score {
     }
 
     public Object getStudentId() {
-        return studentId;}
+    return studentId;}
 
     public int getscoreId() {
-        return scoreId;}
+    return scoreId;}
 
     public Object getSubjectId() {
-        return subjectId;}
+    return subjectId;}
 }

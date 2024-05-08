@@ -67,7 +67,7 @@ public class StudentView {
                     running = false; // 메서드 호출 후 수강생 조회 로직 반복 로직 탈출
                     break;
                 case 2:
-                    // 상태별 수강생 목록 조회 메서드 호출
+                    displayStudentsByStatus(); // 상태별 수강생 목록 조회 메서드 호출
                     running = false; // 메서드 호출 후 수강생 조회 로직 반복 로직 탈출
                     break;
                 case 3:
@@ -93,4 +93,55 @@ public class StudentView {
             });
         }
     }
+    private void displayStudentsByStatus() {
+        boolean running = true;
+        while (running) {
+            consoleIO.print("\n상태별 수강생 목록 조회:");
+            consoleIO.print("1. Green");
+            consoleIO.print("2. Yellow");
+            consoleIO.print("3. Red");
+            consoleIO.print("4. Unknown");
+            consoleIO.print("5. 수강생 관리 메뉴로 돌아가기");
+
+            int choice = consoleIO.getIntInput("조회 항목을 선택하세요:");
+            if (choice == 5) {
+                running = false;  //  상태별 수강생 조회 반복 로직 탈출
+            } else {
+                String status;
+                switch (choice) {
+                    case 1:
+                        status = "Green";
+                        break;
+                    case 2:
+                        status = "Yellow";
+                        break;
+                    case 3:
+                        status = "Red";
+                        break;
+                    case 4:
+                        status = "Unknown";
+                        break;
+                    default:
+                        consoleIO.print("잘못된 입력입니다. 다시 시도하세요.");
+                        status = "";
+                        break;
+                }
+
+                if (!status.isEmpty()) {
+                    List<Student> filteredStudents = studentManager.getStudentsByStatus(status);
+                    if (filteredStudents.isEmpty()) {
+                        consoleIO.print("해당 상태의 수강생이 없습니다.");
+                    } else {
+                        filteredStudents.forEach(student -> {
+                            String studentInfo = String.format("ID: %s, Name: %s, Status: %s",
+                                    student.getStudentId(), student.getStudentName(), student.getStudentStatus());
+                            consoleIO.print(studentInfo);
+                        });
+                    }
+                    running = false; // 상태 선택 로직 탈출
+                }
+            }
+        }
+    }
+
 }

@@ -6,6 +6,8 @@ import camp.utility.ConsoleIO;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+
 
 public class StudentManager {
     private final List<Student> studentStore;
@@ -28,4 +30,10 @@ public class StudentManager {
         return new ArrayList<>(studentStore);
     }
 
+    // 상태별 수강생 목록 반환 메서드
+    public List<Student> getStudentsByStatus(String status) {
+        return studentStore.stream()
+                .filter(student -> student.getStudentStatus().equalsIgnoreCase(status))
+                .collect(Collectors.toList());
+    }
 }

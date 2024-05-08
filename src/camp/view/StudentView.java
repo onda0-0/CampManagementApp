@@ -4,6 +4,7 @@ package camp.view;
 import camp.service.StudentManager;
 import camp.utility.ConsoleIO;
 
+
 public class StudentView {
     // 필드
     private StudentManager studentManager; // 수강생 관리 객체
@@ -28,19 +29,49 @@ public class StudentView {
             int choice = consoleIO.getIntInput("관리 항목을 선택하세요...");
             switch (choice) {
                 case 1:
-                    // 수험생 생성 로직
+                    // 수강생 생성 로직
                     break;
                 case 2:
-                    // 수험생 조회 로직
+                    displayStudents();  // 수강생 조회 로직
                     break;
                 case 3:
-                    // 특정 수험생 검색 로직
+                    // 수강생 정보 검색 로직
                     break;
                 case 4:
-                    running = false; // 수험생 관리 반복 로직 탈출
+                    running = false; // 수강생 관리 반복 로직 탈출
                     break;
                 default:
-                    consoleIO.print("잘못된 입력입니다. 다시 시도하세요."); // 수험생 관리 반복 로직 다시 반복
+                    consoleIO.print("잘못된 입력입니다. 다시 시도하세요."); // 수강생 관리 로직 다시 반복
+                    break;
+            }
+        }
+    }
+
+
+    // 2번(수강생 조회) 로직
+    private void displayStudents() {
+        boolean running = true;
+        while (running) {
+            consoleIO.print("\n수강생 목록 조회:");
+            consoleIO.print("1. 전체 수강생 조회");
+            consoleIO.print("2. 상태별 수강생 목록 조회");
+            consoleIO.print("3. 수강생 관리 메뉴로 돌아가기");
+
+            int choice = consoleIO.getIntInput("조회 항목을 선택하세요:");
+            switch (choice) {
+                case 1:
+                    // 전체 수강생 목록 조회 메서드 호출
+                    running = false; // 메서드 호출 후 수강생 조회 로직 반복 로직 탈출
+                    break;
+                case 2:
+                    // 상태별 수강생 목록 조회 메서드 호출
+                    running = false; // 메서드 호출 후 수강생 조회 로직 반복 로직 탈출
+                    break;
+                case 3:
+                    running = false; // 수강생 조회 로직 반복 로직 탈출
+                    break;
+                default:
+                    consoleIO.print("잘못된 입력입니다. 다시 시도하세요."); // 수강생 조회 로직 다시 반복
                     break;
             }
         }

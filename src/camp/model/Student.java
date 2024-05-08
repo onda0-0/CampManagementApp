@@ -1,21 +1,28 @@
 package camp.model;
 
+import java.util.List;
+
 public class Student {
-    private String studentId;
+    private final String studentId;
     private String studentName;
+    private String studentStatus;
+    private final List<String> subjectNames;
 
-    public Student(String seq, String studentName) {
-        this.studentId = seq;
+    public Student(String studentId, String studentName, List<String> subjectNames) {
+        this.studentId = studentId;
         this.studentName = studentName;
+        this.studentStatus = "Unknown";  // 기본 상태
+        this.subjectNames = subjectNames;
     }
 
-    // Getter
-    public String getStudentId() {
-        return studentId;
-    }
 
-    public String getStudentName() {
-        return studentName;
+    @Override
+    public String toString() {
+        return "Student{" +
+                "studentId='" + studentId + '\'' +
+                ", studentName='" + studentName + '\'' +
+                ", studentStatus='" + studentStatus + '\'' +
+                ", subjectNames=" + subjectNames +
+                '}';
     }
-
 }

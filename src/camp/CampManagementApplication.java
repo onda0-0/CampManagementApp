@@ -273,9 +273,11 @@ public class CampManagementApplication {
         String removeCheck = sc.next();
         if(removeCheck.equals("y") || removeCheck.equals("Y") ){
             for (Score findingScore : scoreStore){
-                if(findingScore.returnFindingStudentId().equals(subjectId)) {
-                    scoreStore.remove(findingScore);
-                    System.out.println("해당하는 학생의 과목 점수를 모두 삭제했습니다.");
+                if(findingScore.returnFindingStudentId().equals(studentId)) {
+                    if(findingScore.returnFindingSubjectId().equals(subjectId)) {
+                        scoreStore.remove(findingScore);
+                        System.out.println("해당하는 학생의 과목 점수를 모두 삭제했습니다.");
+                    }
                 }
             }
         }

@@ -33,6 +33,9 @@ public class Score {
     }
 
     public String returnFindingStudentId(){
+        return this.studentId;
+    }
+    public String returnFindingSubjectId(){
         return this.subjectId;
     }
     public int returnFindingTestScore(){

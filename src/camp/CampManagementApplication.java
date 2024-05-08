@@ -233,10 +233,17 @@ public class CampManagementApplication {
         // 기능 구현
         System.out.println("\n점수 수정 성공!");
     }
+    // 조회할 과목 ID 입력
+    private static String getSubjectId() {
+        System.out.print("\n조회하고 싶은 과목 번호을 입력하시오...");
+        return sc.next();
+    }
 
     // 수강생의 특정 과목 회차별 등급 조회
     private static void inquireRoundGradeBySubject() {
         String studentId = getStudentId(); // 관리할 수강생 고유 번호
+        String subjectId = getSubjectId(); // 조회할 과목 고유 번호
+
         // 기능 구현 (조회할 특정 과목)
         System.out.println("회차별 등급을 조회합니다...");
         // 기능 구현

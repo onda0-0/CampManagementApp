@@ -25,7 +25,7 @@ public class Score {
 
     // Getter
     public int getScoreId(int inputA) {
-        return scoreId;
+        return inputA;
     }
 
     public void modifiScore(int testScore) {

@@ -2,6 +2,7 @@ package camp.view;
 
 import camp.utility.ConsoleIO;
 
+
 public class MainView {
     private StudentView studentView;
     private ScoreView scoreView;

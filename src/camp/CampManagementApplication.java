@@ -244,10 +244,20 @@ public class CampManagementApplication {
         String studentId = getStudentId(); // 관리할 수강생 고유 번호
         String subjectId = getSubjectId(); // 조회할 과목 고유 번호
 
-        // 기능 구현 (조회할 특정 과목)
+        List<Score> filterScore = scoreStore.stream()
+                .filter(score -> score.getStudentId().equals(studentId) && score.getSubjectId().equals(subjectId))
+                .toList();
         System.out.println("회차별 등급을 조회합니다...");
         // 기능 구현
         System.out.println("\n등급 조회 성공!");
+        if(filterScore.isEmpty()){
+            System.out.println("조회할 정보가 없습니다.");
+        } else {
+            for(Score score : filterScore){
+                System.out.println(score.getScoreId() + "회차" + "등급: " + score.getTestRate());
+            }
+            System.out.println("\n등급 조회 성공!");
+        }
     }
     // 수강생의 과목별 평균 등급 조회
     private static void inquireAvgRateBySubject() {

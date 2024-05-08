@@ -233,7 +233,7 @@ public class CampManagementApplication {
 
     //김현성 2024.05.07수정
     // 수강생의 과목별 회차 점수 수정
-    private static void updateRoundScoreBySubject() {
+    private static void updateRoundScoreBySubject(){
         String studentId = getStudentId(); // 관리할 수강생 고유 번호
         String subjectId =  getSubjectId();// 관리할 과목 고유 번호 getSubjectId();
         // 기능 구현 (수정할 과목 및 회차, 점수)
@@ -277,6 +277,9 @@ public class CampManagementApplication {
                     if(findingScore.returnFindingSubjectId().equals(subjectId)) {
                         scoreStore.remove(findingScore);
                         System.out.println("해당하는 학생의 과목 점수를 모두 삭제했습니다.");
+                    }
+                    else{
+                        System.out.println("해당하는 학생의 과목 점수가 없습니다.");
                     }
                 }
             }

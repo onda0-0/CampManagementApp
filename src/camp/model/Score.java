@@ -28,6 +28,7 @@ public class Score {
         return inputA;
     }
 
+    // Setter
     public void modifiScore(int testScore) {
         this.testScore = testScore;
     }

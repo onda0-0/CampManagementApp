@@ -191,7 +191,8 @@ public class CampManagementApplication {
             System.out.println("1. 수강생의 과목별 시험 회차 및 점수 등록");
             System.out.println("2. 수강생의 과목별 회차 점수 수정");
             System.out.println("3. 수강생의 특정 과목 회차별 등급 조회");
-            System.out.println("4. 메인 화면 이동");
+            System.out.println("4. 수강생의 과목별 시험점수 삭제");
+            System.out.println("5. 메인 화면 이동");
             System.out.print("관리 항목을 선택하세요...");
             int input = sc.nextInt();
 
@@ -199,7 +200,8 @@ public class CampManagementApplication {
                 case 1 -> createScore(); // 수강생의 과목별 시험 회차 및 점수 등록
                 case 2 -> updateRoundScoreBySubject(); // 수강생의 과목별 회차 점수 수정
                 case 3 -> inquireRoundGradeBySubject(); // 수강생의 특정 과목 회차별 등급 조회
-                case 4 -> flag = false; // 메인 화면 이동
+                case 4 -> removeRoundScoreBySubject(); //수강생의 과목별 시험점수 삭제
+                case 5 -> flag = false; // 메인 화면 이동
                 default -> {
                     System.out.println("잘못된 입력입니다.\n메인 화면 이동...");
                     flag = false;
@@ -242,22 +244,46 @@ public class CampManagementApplication {
 
 
         for (Score findingScore : scoreStore){
-            if(findingScore.returnFindingStudentId().equals(studentId)){
-                if (findingScore.returnFindingScoreId() == scoreId){
-                    System.out.println(findingScore);
-                    System.out.print("해당하는 회자를 잦았습니다. 현재점수("+ findingScore.returnFindingTestScore()+
-                            "점) \n수정할 시험점수 입력( 0 ~ 100 ) : ");
+            if(findingScore.returnFindingStudentId().equals(studentId)){ //학생 고유번호가 같은걸 찾고
+                if (findingScore.returnFindingScoreId() == scoreId){ //회자 번호가 같은걸 찾았다면
+                    System.out.print("해당하는 회자를 잦았습니다. 현재점수("+ findingScore.returnFindingTestScore()+"점)");
+                    System.out.print("수정할 시험점수 입력( 0 ~ 100 ) : ");
                     int testScore = sc.nextInt();
-                    findingScore.modifiScore(testScore);
+                    if(testScore >= 0 && testScore <= 100){
+                        findingScore.modifiScore(testScore); //class 안에있는 수정 method
+                    }
+                    else {
+                        System.out.println("---수정할 시험점수가 0~100사이의 정수가 아닙니다.---");
+                    }
                 }
                 else{
                     System.out.println("---해당되는 회차의 점수가 없습니다.---");
                 }
             }
         }
-
-        System.out.println("\n점수 수정 성공!");
     }
+    //김현성 2024.05.08수정
+    // 수강생의 과목별 시험 점수 삭제
+    private static void removeRoundScoreBySubject() {
+        String studentId = getStudentId(); // 관리할 수강생 고유 번호
+        String subjectId =  getSubjectId();// 관리할 과목 고유 번호 getSubjectId();
+        // 기능 구현 (삭제 할 과목 및 회차, 점수)
+
+        System.out.println("해당 학생의 과목별 시험점수를 삭제하시겠습니까?(y/n) : ");
+        String removeCheck = sc.next();
+        if(removeCheck.equals("y") || removeCheck.equals("Y") ){
+            for (Score findingScore : scoreStore){
+                if(findingScore.returnFindingStudentId().equals(subjectId)) {
+                    scoreStore.remove(findingScore);
+                    System.out.println("해당하는 학생의 과목 점수를 모두 삭제했습니다.");
+                }
+            }
+        }
+        else{
+            System.out.println("---취소를 선택하셨으니, 삭제를 취소합니다.---");
+        }
+    }
+
 
     // 수강생의 특정 과목 회차별 등급 조회
     private static void inquireRoundGradeBySubject() {

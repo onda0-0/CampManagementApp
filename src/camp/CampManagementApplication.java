@@ -216,17 +216,46 @@ public class CampManagementApplication {
     // 수강생의 과목별 시험 회차 및 점수 등록
     private static void createScore() {
         String studentId = getStudentId(); // 관리할 수강생 고유 번호
+        String subjectId = getSubjectId(); // 관리할 과목 고유 번호 삭제예정
         System.out.println("시험 점수를 등록합니다...");
+        System.out.print("회차 입력 : ");
+        int scoreId= sc.nextInt();
+        System.out.print("시험점수 입력 : ");
+        int testScore = sc.nextInt();
+
         // 기능 구현
+        Score score = new Score(studentId, subjectId, testScore, scoreId); // Score 객체 생성 삭제예정
+        scoreStore.add(score); //생성한 Score객체 삽입 삭제예정
         System.out.println("\n점수 등록 성공!");
     }
 
+    //김현성 2024.05.07수정
     // 수강생의 과목별 회차 점수 수정
     private static void updateRoundScoreBySubject() {
         String studentId = getStudentId(); // 관리할 수강생 고유 번호
+        String subjectId =  getSubjectId();// 관리할 과목 고유 번호 getSubjectId();
         // 기능 구현 (수정할 과목 및 회차, 점수)
         System.out.println("시험 점수를 수정합니다...");
         // 기능 구현
+        System.out.print("수정 할 회차 입력 : ");
+        int scoreId= sc.nextInt();
+
+
+        for (Score findingScore : scoreStore){
+            if(findingScore.returnFindingStudentId().equals(studentId)){
+                if (findingScore.returnFindingScoreId() == scoreId){
+                    System.out.println(findingScore);
+                    System.out.print("해당하는 회자를 잦았습니다. 현재점수("+ findingScore.returnFindingTestScore()+
+                            "점) \n수정할 시험점수 입력( 0 ~ 100 ) : ");
+                    int testScore = sc.nextInt();
+                    findingScore.modifiScore(testScore);
+                }
+                else{
+                    System.out.println("---해당되는 회차의 점수가 없습니다.---");
+                }
+            }
+        }
+
         System.out.println("\n점수 수정 성공!");
     }
 
@@ -238,5 +267,10 @@ public class CampManagementApplication {
         // 기능 구현
         System.out.println("\n등급 조회 성공!");
     }
+    private static String getSubjectId() {
+        System.out.print("\n관리할 과목의 번호를 입력하시오...");
+        return sc.next();
+    }
+
 
 }

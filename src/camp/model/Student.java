@@ -25,4 +25,25 @@ public class Student {
                 ", subjectNames=" + subjectNames +
                 '}';
     }
+    public String getStudentId(){
+        return studentId;
+    }
+    public String getStudentStatus() {
+        return studentStatus;
+    }
+
+    public List<String> getSubjectNames() {
+        return subjectNames;
+    }
+
+
+    //Setter
+
+    public void setStudentName(String studentName) {
+        this.studentName = studentName;
+    }
+
+    public void setStudentStatus(String studentStatus) {
+        this.studentStatus = studentStatus;
+    }
 }

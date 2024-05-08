@@ -80,8 +80,26 @@ public class ScoreManager {
             System.out.println("이미 해당 회차에 점수가 등록되어 있습니다.");
         }
 
+        int testsscore;
+        do {
+            System.out.print("점수를 입력하세요: ");
+            testsscore = sc.nextInt();
+            if(testsscore < 0 || testsscore > 100) {
+                System.out.println("올바른 점수를 입력해주세요");
+            }
+        } while (testsscore < 0 || testsscore > 100);
+
+        // 점수 저장
+        Score score = new Score( studentId, selectedSubject.getSubjectId(), scoreId, testsscore);
+        scoreStore.add(score);
+
+        System.out.println(scoreId+"회차 "+ selectedSubject.getSubjectName() + "시험 점수:"+testsscore+" 등급:"+score.scoreTestRate()+" 등록 완료");
+
+
     }
-}
+
+    }
+
 
 
 

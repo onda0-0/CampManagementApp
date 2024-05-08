@@ -7,6 +7,7 @@ import camp.utility.ConsoleIO;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class StudentManager {
     // 필드(생성자로 주입)
@@ -53,6 +54,7 @@ public class StudentManager {
             consoleIO.print((i + 1) + ". " + availableSubjects.get(i).getSubjectName());
         } // 필터링에따른  과목 목록 출력
 
+        //사용자가 과목목록을 입력했을때 유효성검사
 
         return selectedSubjectNames;
     }
@@ -79,10 +81,22 @@ public class StudentManager {
         return status;
     }
 
-    //중복확인메서드-리스트요소의 중복을 제거했을때 처음과 크기가 다르면 중복이 있다는 의미. 즉, 참이면 중복이 있다는 뜻이다.
+    //중복 확인 메서드-리스트요소의 중복을 제거했을때 처음과 크기가 다르면 중복이 있다는 의미. 즉, 참이면 중복이 있다는 뜻이다.
     public static boolean hasDuplicates(List<?> list) {
         return list.stream().distinct().count() != list.size();
     }
+
+    //유효범위 초과 여부 확인 메서드-true가 리턴되면 유효하지않은 값이 들어있다는 의미가 된다.
+    public static boolean hasInvalidValues(List<String> stringList, int threshold) {
+        List<Integer> intList = stringList.stream()
+                .map(Integer::parseInt) // 문자열을 정수로 변환
+                .collect(Collectors.toList());
+
+        // 0보다 작은 값 또는 threshold보다 큰 값이 있는지 확인
+        return intList.stream().anyMatch(value -> value < 0 || value > threshold);
+    }
+
+
 
 
 }

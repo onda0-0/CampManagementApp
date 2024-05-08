@@ -1,8 +1,11 @@
 package camp.view;
 
 
+import camp.model.Student;
 import camp.service.StudentManager;
 import camp.utility.ConsoleIO;
+
+import java.util.List;
 
 
 public class StudentView {
@@ -48,7 +51,7 @@ public class StudentView {
     }
 
 
-    // 2번(수강생 조회) 로직
+    // 수강생 조회 로직
     private void displayStudents() {
         boolean running = true;
         while (running) {
@@ -60,7 +63,7 @@ public class StudentView {
             int choice = consoleIO.getIntInput("조회 항목을 선택하세요:");
             switch (choice) {
                 case 1:
-                    // 전체 수강생 목록 조회 메서드 호출
+                    displayAllStudents() ;// 전체 수강생 목록 조회 메서드 호출
                     running = false; // 메서드 호출 후 수강생 조회 로직 반복 로직 탈출
                     break;
                 case 2:
@@ -74,6 +77,20 @@ public class StudentView {
                     consoleIO.print("잘못된 입력입니다. 다시 시도하세요."); // 수강생 조회 로직 다시 반복
                     break;
             }
+        }
+    }
+
+    // 전체 수강생 목록 조회 메서드
+    private void displayAllStudents() {
+        List<Student> students =   studentManager.getAllStudents();
+        if (students.isEmpty()) {
+            consoleIO.print("등록된 수강생이 없습니다.");
+        } else {
+            students.forEach(student -> {
+                // 아이디와 이름만 출력
+                String studentInfo = String.format("ID: %s, Name: %s", student.getStudentId(), student.getStudentName());
+                consoleIO.print(studentInfo);
+            });
         }
     }
 }

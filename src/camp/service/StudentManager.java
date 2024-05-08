@@ -3,6 +3,8 @@ package camp.service;
 import camp.model.Student;
 import camp.model.Subject;
 import camp.utility.ConsoleIO;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class StudentManager {
@@ -21,5 +23,9 @@ public class StudentManager {
         this.idGenerator = idGenerator;
     }
 
+    // 전체 수강생 목록 반환 메서드
+    public List<Student> getAllStudents() {
+        return new ArrayList<>(studentStore);
+    }
 
 }

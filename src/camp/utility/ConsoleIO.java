@@ -8,13 +8,14 @@ public class ConsoleIO {
     // 정수 입력 받기
     public int getIntInput(String prompt) {
         System.out.print(prompt);
-        return sc.nextInt();
+        int number = sc.nextInt();
+        sc.nextLine();  //개행 문자 처리
+        return number ;
     }
 
     // 문자열 입력 받기
     public String getStringInput(String prompt) {
         System.out.print(prompt);
-        sc.nextLine(); // 개행문자 처리
         return sc.nextLine();
     }
 

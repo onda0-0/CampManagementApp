@@ -24,3 +24,4 @@ public class ConsoleIO {
         System.out.println(message);
     }
 }
+

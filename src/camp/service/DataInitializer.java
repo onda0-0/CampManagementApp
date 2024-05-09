@@ -5,6 +5,7 @@ import camp.model.Student;
 import camp.model.Subject;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 // 데이터 초기화 서비스
@@ -65,8 +66,47 @@ public class DataInitializer {
 
 
     // 학생 데이터  ArrayList를 사용해 동적배열로 반환 (빈상태로 반환)
-    public static List<Student> initializeStudents() {
-        return new ArrayList<>();
+    public static List<Student> initializeStudents(IdSequenceGenerator idGenerator) {
+        return new ArrayList<>(
+                List.of(
+                        new Student(
+                                idGenerator.generateStudentId(),
+                                "류선재",
+                                new ArrayList<>(Arrays.asList("객체지향","MySQL","JPA","Redis","디자인 패턴","MongoDB"))
+                        ),
+                        new Student(
+                                idGenerator.generateStudentId(),
+                                "김혜윤",
+                                new ArrayList<>(Arrays.asList("객체지향","MySQL","Spring","JPA","Redis","MongoDB"))
+                        ),
+                        new Student(
+                                idGenerator.generateStudentId(),
+                                "류시우",
+                                new ArrayList<>(Arrays.asList("객체지향","MySQL","JPA","Redis","MongoDB"))
+                        )
+                        ,new Student(
+                                idGenerator.generateStudentId(),
+                                "김도영",
+                                new ArrayList<>(Arrays.asList("객체지향","MySQL","JPA","Redis","MongoDB"))
+                        ),
+                        new Student(
+                                idGenerator.generateStudentId(),
+                                "강예서",
+                                new ArrayList<>(Arrays.asList("객체지향","MySQL","JPA","Redis","MongoDB"))
+                        ),
+                        new Student(
+                                idGenerator.generateStudentId(),
+                                "고윤정",
+                                new ArrayList<>(Arrays.asList("객체지향","MySQL","JPA","Redis","MongoDB"))
+                        ),
+                        new Student(
+                                idGenerator.generateStudentId(),
+                                "이정하",
+                                new ArrayList<>(Arrays.asList("객체지향","MySQL","JPA","Redis","MongoDB"))
+                        )
+
+                )
+        );
     }
 
     // 점수 데이터  ArrayList를 사용해 동적배열로 반환 (빈상태로 반환)

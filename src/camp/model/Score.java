@@ -1,16 +1,16 @@
 package camp.model;
 
 public class Score {
-    private String studentId;
-    private String subjectId;
+    private final String studentId;
+    private final String subjectId;
 
-    private int iteration; //회차
+    private final int iteration; //회차
     private int score; //점수
-    private char grade; //등급  //하은-char로 변경
+    private String grade; //등급  //하은-char로 변경
 
 
 
-    public Score(String studentId, String subjectId, int iteration, int score, char grade) {
+    public Score(String studentId, String subjectId, int iteration, int score, String grade) {
         this.studentId = studentId;
         this.subjectId = subjectId;
         this.iteration = iteration;
@@ -18,29 +18,34 @@ public class Score {
         this.grade = grade;
     }
 
-
-
     // Getter
 
-    public String getSubjectId() {
-        return subjectId;
+    public void setGrade(String grade) {
+        this.grade = grade;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public int getIteration() {
+        return iteration;
     }
 
     public int getScore() {
         return score;
     }
 
+    public String getSubjectId() {
+        return subjectId;
+    }
+
     public String getStudentId() {
         return studentId;
     }
-    public int getIteration() {
-        return iteration;
-    }
 
     // Setter
-    public void modifiScore(int testScore) {
-        this.score = testScore;
-    }
+
 
     public String returnFindingStudentId(){
         return this.studentId;
@@ -48,11 +53,13 @@ public class Score {
     public String returnFindingSubjectId(){
         return this.subjectId;
     }
-    public int returnFindingTestScore(){
-        return this.score;
-    }
+
     public int returnFindingScoreId(){
         return this.iteration;
+    }
+
+    public String getTestRate() {
+        return grade;
     }
 
 

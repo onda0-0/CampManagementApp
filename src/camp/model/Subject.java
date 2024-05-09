@@ -1,9 +1,9 @@
 package camp.model;
 
 public class Subject {
-    private String subjectId;
-    private String subjectName;
-    private String subjectType;
+    private final String subjectId;
+    private final String subjectName;
+    private final String subjectType;
 
     public Subject(String subjectId , String subjectName, String subjectType) {
         this.subjectId = subjectId ;

@@ -3,9 +3,9 @@ package camp.view;
 import camp.utility.ConsoleIO;
 
 public class MainView {
-    private StudentView studentView;
-    private ScoreView scoreView;
-    private ConsoleIO consoleIO;
+    private final StudentView studentView;
+    private final ScoreView scoreView;
+    private final ConsoleIO consoleIO;
 
     public MainView(StudentView studentView, ScoreView scoreView, ConsoleIO consoleIO) {
         this.studentView = studentView;

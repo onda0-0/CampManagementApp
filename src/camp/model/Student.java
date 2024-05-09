@@ -25,9 +25,7 @@ public class Student {
     }
     public String  getStudentName() {return  studentName;}
     public String getStudentStatus() {return studentStatus;}
-    public List<String> getSubjectNames() {
-        return subjectNames;
-    }
+
 
     // Setter
     public void setStudentName(String studentName) {

@@ -12,8 +12,8 @@ public class StudentView {
 
 
     // 필드
-    private StudentManager studentManager; // 수강생 관리 객체
-    private ConsoleIO consoleIO; // 입출력 유틸리티 객체
+    private final StudentManager studentManager; // 수강생 관리 객체
+    private final ConsoleIO consoleIO; // 입출력 유틸리티 객체
 
     // 생성자
     public StudentView(StudentManager studentManager, ConsoleIO consoleIO) {
@@ -129,25 +129,16 @@ public class StudentView {
             if (choice == 5) {
                 running = false;  // 수강생 조회 로직 탈출
             } else {
-                String status;
-                switch (choice) {
-                    case 1:
-                        status = "Green";
-                        break;
-                    case 2:
-                        status = "Yellow";
-                        break;
-                    case 3:
-                        status = "Red";
-                        break;
-                    case 4:
-                        status = "Unknown";
-                        break;
-                    default:
+                String status = switch (choice) {
+                    case 1 -> "Green";
+                    case 2 -> "Yellow";
+                    case 3 -> "Red";
+                    case 4 -> "Unknown";
+                    default -> {
                         consoleIO.print("잘못된 입력입니다. 다시 시도하세요.");
-                        status = "";
-                        break;
-                }
+                        yield "";
+                    }
+                };
 
                 if (!status.isEmpty()) {
                     List<Student> filteredStudents = studentManager.getStudentsByStatus(status);
@@ -227,7 +218,7 @@ public class StudentView {
 
         studentManager.updateStudentName(student, newName);
         consoleIO.print("수강생 이름이 업데이트되었습니다.");
-        consoleIO.print("업데이트된 수강생 정보: " + student.toString());
+        consoleIO.print("업데이트된 수강생 정보: " + student);
     }
 
     // 수강생 상태를 업데이트하는 메서드
@@ -251,7 +242,7 @@ public class StudentView {
         // 상태 업데이트
         studentManager.updateStudentStatus(student, newStatus);
         consoleIO.print("수강생 상태가 업데이트되었습니다.");
-        consoleIO.print("업데이트된 수강생 정보: " + student.toString());
+        consoleIO.print("업데이트된 수강생 정보: " + student);
     }
 
 

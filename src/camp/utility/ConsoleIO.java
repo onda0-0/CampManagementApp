@@ -16,7 +16,6 @@ public class ConsoleIO {
     // 문자열 입력 받기
     public String getStringInput(String prompt) {
         System.out.print(prompt);
-        sc.nextLine(); // 개행문자 처리
         return sc.nextLine();
     }
 

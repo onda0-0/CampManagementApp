@@ -37,22 +37,22 @@
 ### 데이터 모델
 
 #### 수강생(Student)
-- [ ] studentId (고유번호, Primary Key)
-- [ ] studentName(이름)
-- [ ] subjectNames (과목목록)
-- [ ] studentStatus (상태,  Green/Red/Yellow)  
+- [x] studentId (고유번호, Primary Key)
+- [x] studentName(이름)
+- [x] subjectNames (과목목록)
+- [x] studentStatus (상태,  Green/Red/Yellow)  
   
 #### 과목(Subject)
-- [ ] subjectId (고유번호, Primary Key)
-- [ ] subjectName (과목명)
-- [ ] subjectType (과목타입, 필수/선택)
+- [x] subjectId (고유번호, Primary Key)
+- [x] subjectName (과목명)
+- [x] subjectType (과목타입, 필수/선택)
  
 #### 점수(Score)
-- [ ] subjectId (과목 고유번호, Foreign Key)
-- [ ] studentId (수강생 고유번호, Foreign Key)
-- [ ] iteration (회차)
-- [ ] score (점수)
-- [ ] grade (등급, A/B/C/D/E/F/N)
+- [x] subjectId (과목 고유번호, Foreign Key)
+- [x] studentId (수강생 고유번호, Foreign Key)
+- [x] iteration (회차)
+- [x] score (점수)
+- [x] grade (등급, A/B/C/D/E/F/N)
 
 ### 관계형 데이터베이스 모델 (ERD)
 - 수강생(Student) 테이블은 여러 점수(Score) 엔티티와 일대다(One-to-Many) 관계를 갖습니다. 즉, 한 명의 수강생이 여러 과목의 점수를 받을 수 있습니다.
@@ -63,7 +63,7 @@
 
 ### 수강생 관리
 Create
-- [x] 수강생 정보를 등록할 수 있습니다. (수강생의 고유번호는 중복될 수 없습니다.)
+- [ ] 수강생 정보를 등록할 수 있습니다. (수강생의 고유번호는 중복될 수 없습니다.)
 
 Read
 - [x] 수강생 목록을 조회할 수 있습니다. (조회 형식은 자유입니다.)
@@ -89,23 +89,8 @@ Read
 
 Update
 - [ ] 수강생의 과목별 회차 점수를 수정할 수 있습니다.
-  Delete
+
+Delete
 - [ ] 수강생의 과목별 시험 점수를 삭제할 수 있습니다.
 
 
-## 기본 파일구조
-데이터 저장소 및 초기 데이터 설정:
-    - studentStore, subjectStore, scoreStore는 수강생, 과목, 점수를 각각 저장하는 List입니다.
-    - setInitData() 메서드는 프로그램 초기화 시에 초기 데이터를 설정합니다.
-인덱스 관리:
-    - sequence() 메서드를 사용하여 각 엔티티의 고유번호를 자동으로 증가시키고 있습니다.
-메인 메뉴 및 서브 메뉴:
-    - displayMainView() 메서드가 메인 메뉴를 보여주고, 해당하는 기능을 실행하도록 분기합니다.
-    - displayStudentView() 메서드가 수강생 관리 메뉴를, displayScoreView() 메서드가 점수 관리 메뉴를 처리합니다.
-수강생 관리 기능:
-    - createStudent() 메서드가 수강생을 등록하는 기능입니다. 
-    - inquireStudent() 메서드가 수강생 목록을 조회하는 기능입니다.
-점수 관리 기능:
-    - createScore() 메서드가 수강생의 과목별 시험 회차 및 점수를 등록하는 기능입니다.
-    - updateRoundScoreBySubject() 메서드가 수강생의 과목별 회차 점수를 수정하는 기능입니다.
-    - inquireRoundGradeBySubject() 메서드가 수강생의 특정 과목 회차별 등급을 조회하는 기능입니다.

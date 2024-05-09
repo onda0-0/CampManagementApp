@@ -63,7 +63,7 @@ public class StudentManager {
                 } else {
                     consoleIO.print("최소 " + minSubjects + "개의 과목을 선택해야 합니다. 계속 선택하세요.");
                 }
-            } else if (choice > 0 && choice <= availableSubjects.size()) {
+            } else if (choice > 0 && choice <= availableSubjects.size()) {//유효한범위안에 있다면
                 Subject selectedSubject = availableSubjects.get(choice - 1);
                 if (!selectedSubjectNames.contains(selectedSubject.getSubjectName())) {
                     selectedSubjectNames.add(selectedSubject.getSubjectName());
@@ -107,13 +107,11 @@ public class StudentManager {
     // 수강생의 이름을 업데이트하는 메서드
     public void updateStudentName(Student student, String newName) {
         student.setStudentName(newName);
-        consoleIO.print("수강생 이름이 성공적으로 업데이트되었습니다.");
     }
 
     // 수강생의 상태를 업데이트하는 메서드
     public void updateStudentStatus(Student student, String newStatus) {
         student.setStudentStatus(newStatus);
-        consoleIO.print("수강생 이름이 성공적으로 업데이트되었습니다.");
     }
 
     // 수강생을 삭제하는 메서드
@@ -124,4 +122,5 @@ public class StudentManager {
             consoleIO.print("수강생 정보 삭제에 실패했습니다.");
         }
     }
+
 }

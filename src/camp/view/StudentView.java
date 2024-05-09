@@ -208,13 +208,28 @@ public class StudentView {
         consoleIO.print("수강생 이름이 업데이트되었습니다.");
     }
 
+    /*
     // 수강생 상태를 업데이트하는 메서드
     private void updateStudentStatus(Student student) {
-        String newStatus = consoleIO.getStringInput("새로운 상태를 입력하세요:");
+        String newStatus = studentManager.isValidStatusInput();
+        studentManager.updateStudentStatus(student, newStatus);
+        consoleIO.print("수강생 상태가 업데이트되었습니다.");
+    }*/
+
+    // 수강생 상태를 업데이트하는 메서드
+    private void updateStudentStatus(Student student) {
+        String newStatus ="";
+        while (true){
+            newStatus = consoleIO.getStringInput("새로운 상태를 입력하세요(green, yellow, red):");
+            if (newStatus.equalsIgnoreCase("green") || newStatus.equalsIgnoreCase("yellow") || newStatus.equalsIgnoreCase("red")) {
+                newStatus = newStatus.toUpperCase();
+                break;
+            }
+            System.out.println("잘못된 상태입니다. 다시 입력하세요.");
+        }
         studentManager.updateStudentStatus(student, newStatus);
         consoleIO.print("수강생 상태가 업데이트되었습니다.");
     }
-
 
     // 수강생 정보를 삭제하는 메서드
     private void deleteStudent(Student student) {

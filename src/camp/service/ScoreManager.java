@@ -82,13 +82,11 @@ public class ScoreManager {
     public void inquireRoundGradeBySubject() {
         String studentId = consoleIO.getStringInput("\n관리할 수강생의 번호를 입력하시오..."); // 관리할 수강생 고유 번호
         String subjectId = consoleIO.getStringInput("\n조회하고 싶은 과목 번호을 입력하시오..."); // 조회할 과목 고유 번호
-
+        System.out.println("회차별 등급을 조회합니다...");
         List<Score> filterScore = scoreStore.stream()
                 .filter(score -> score.returnFindingStudentId().equals(studentId) && score.returnFindingSubjectId().equals(subjectId))
                 .toList();
-        System.out.println("회차별 등급을 조회합니다...");
-        // 기능 구현
-        System.out.println("\n등급 조회 성공!");
+
         if(filterScore.isEmpty()){
             System.out.println("조회할 정보가 없습니다.");
         } else {
@@ -150,7 +148,7 @@ public class ScoreManager {
         System.out.println("\n평균 등급 조회 성공!");
 
     }
-
+    // 특정 상태 수강생들의 필수 과목 평균 등급을 조회
     public void inquireStatusAvgBySubject() {
         System.out.println("아직,,");
     }

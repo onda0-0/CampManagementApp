@@ -1,0 +1,26 @@
+
+–
+java:S1598"{This file "ScoreView.java" should be located in "camp\view" directory, not in "C:\Users\tjrgu\OneDrive\ë°”íƒ• í™”ë©´\view".(Òš÷üÿÿÿÿ
+˜
+java:S1186¤"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ƒÛ ø
+m
+java:S3776>"RRefactor this method to reduce its Cognitive Complexity from 32 to the 15 allowed.(É™ÙÈýÿÿÿÿ
+U
+java:S1854€">Remove this useless assignment to local variable "scoreGrade".(üÖø
+Z
+java:S1854‚">Remove this useless assignment to local variable "scoreGrade".(Ç¼Åãúÿÿÿÿ
+Z
+java:S1854„">Remove this useless assignment to local variable "scoreGrade".(Ç„åÍùÿÿÿÿ
+Z
+java:S1854†">Remove this useless assignment to local variable "scoreGrade".(Ìá‡ùúÿÿÿÿ
+U
+java:S1854ˆ">Remove this useless assignment to local variable "scoreGrade".(ÍèÛ¨
+U
+java:S1854Š">Remove this useless assignment to local variable "scoreGrade".(Æ£ Ü
+Q	java:S125D"<This block of commented-out lines of code should be removed.(®Ð¤™
+E	java:S106V"+Replace this use of System.out by a logger.(ÅòÆ€þÿÿÿÿ
+E	java:S106["+Replace this use of System.out by a logger.(ÅÑˆ—ùÿÿÿÿ
+E	java:S106v"+Replace this use of System.out by a logger.(®½ÃÜþÿÿÿÿ
+E	java:S106y"+Replace this use of System.out by a logger.(’âÇÚüÿÿÿÿ
+L
+java:S1144¤"5Remove this unused private "displayScoreView" method.(ƒÛ ø

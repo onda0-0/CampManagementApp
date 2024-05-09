@@ -235,40 +235,6 @@ public class ScoreManager {
     }
 
 
-    public char makeScoreGrade(String subjectType, int score) {
-        char grade = 'N';
-        if (subjectType.equals("MANDATORY")) {
-            if (score >= 95)
-                grade = 'A';
-            else if (score >= 90)
-                grade = 'B';
-            else if (score >= 80)
-                grade = 'C';
-            else if (score >= 70)
-                grade = 'D';
-            else if (score >= 60)
-                grade = 'F';
-            else
-                grade = 'N';
-        } else if (subjectType.equals("CHOICE")) {
-            if (score >= 90)
-                grade = 'A';
-            else if (score >= 80)
-                grade = 'B';
-            else if (score >= 70)
-                grade = 'C';
-            else if (score >= 60)
-                grade = 'E';
-            else if (score >= 50)
-                grade = 'F';
-            else
-                grade = 'N';
-        }
-        return grade;
-    }
-
-
-
     // 수강생의 특정 과목 회차별 등급 조회
     public void inquireRoundGradeBySubject() {
         String studentId = consoleIO.getStringInput("\n관리할 수강생의 번호를 입력하시오..."); // 관리할 수강생 고유 번호

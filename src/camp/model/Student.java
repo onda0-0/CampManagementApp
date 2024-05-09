@@ -23,7 +23,7 @@ public class Student {
     public String getStudentId() {
         return studentId;
     }
-    public Object getStudentName() {return  studentName;}
+    public String  getStudentName() {return  studentName;}
     public String getStudentStatus() {return studentStatus;}
     public List<String> getSubjectNames() {
         return subjectNames;

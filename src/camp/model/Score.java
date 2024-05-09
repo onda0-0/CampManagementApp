@@ -6,6 +6,11 @@ public class Score {
 
     private int iteration; //회차
     private int score; //점수
+
+    public int getIteration() {
+        return iteration;
+    }
+
     private String grade; //등급
 
 
@@ -19,8 +24,17 @@ public class Score {
 
 
     // Getter
-    public int getScoreId(int inputA) {
-        return inputA;
+
+    public String getSubjectId() {
+        return subjectId;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public String getStudentId() {
+        return studentId;
     }
 
     // Setter

@@ -8,7 +8,9 @@ public class Student {
     private String studentStatus;
     private final List<String> subjectNames;
 
+
     public Student(String studentId, String studentName, List<String> subjectNames) {
+
         this.studentId = studentId;
         this.studentName = studentName;
         this.studentStatus = "Unknown";
@@ -46,4 +48,5 @@ public class Student {
     public void setStudentStatus(String studentStatus) {
         this.studentStatus = studentStatus;
     }
+
 }

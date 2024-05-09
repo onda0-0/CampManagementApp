@@ -4,7 +4,10 @@ import camp.model.Student;
 import camp.model.Subject;
 import camp.utility.ConsoleIO;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
 import java.util.stream.Collectors;
 
 public class StudentManager {
@@ -19,12 +22,14 @@ public class StudentManager {
     private static final String SUBJECT_TYPE_CHOICE = "CHOICE";//선택과목
 
     //생성자
+
     public StudentManager(List<Student> studentStore, List<Subject> subjectStore, ConsoleIO consoleIO, IdSequenceGenerator idGenerator) {
         this.studentStore = studentStore;
         this.subjectStore = subjectStore;
         this.consoleIO = consoleIO;
         this.idGenerator = idGenerator;
     }
+
     // 수강생 등록 메서드
     public void createStudent(String studentName, List<String>  selectedSubjectNames) {
         Student student = new Student(idGenerator.generateStudentId(), studentName,  selectedSubjectNames);

@@ -153,11 +153,43 @@ public class StudentView {
                 .ifPresentOrElse(
                         student -> {
                             consoleIO.print(student.toString()); // 수강생 정보 출력
-                             // 수강생 정보 관리 옵션 메서드
+                            displayStudentInformation(student);// 수강생 정보 관리 옵션 메서드
                         },
                         () -> consoleIO.print("해당 ID의 수강생을 찾을 수 없습니다.") // 수강생 id 가 존재하지 않을경우
                 );
     }
+
+    // 수강생 정보 관리 옵션 메서드
+    private void displayStudentInformation(Student student) {
+        boolean running = true;
+        while (running) {
+            consoleIO.print("\n수강생 정보 관리:");
+            consoleIO.print("1. 수강생 이름 수정");
+            consoleIO.print("2. 수강생 상태 수정");
+            consoleIO.print("3. 수강생 삭제");
+            consoleIO.print("4. 수강생 관리 메뉴로 돌아가기");
+
+            int choice = consoleIO.getIntInput("옵션을 선택하세요:");
+            switch (choice) {
+                case 1:
+                    // 수강생 이름 수정 메서드
+                    break;
+                case 2:
+                   // 수강생 상태 수정 메서드
+                    break;
+                case 3:
+                    // 수강생 삭제 메서드
+                    break;
+                case 4:
+                    running = false; // 수강생 정보 관련 로직 탈출
+                    break;
+                default:
+                    consoleIO.print("잘못된 입력입니다. 다시 시도하세요.");
+                    break;
+            }
+        }
+    }
+
 
 
 }

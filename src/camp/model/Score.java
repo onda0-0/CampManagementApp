@@ -22,6 +22,9 @@ public class Score {
     public int getScoreId(int inputA) {
         return inputA;
     }
+    public int getIteration() {
+        return iteration;
+    }
 
     // Setter
     public void modifiScore(int testScore) {

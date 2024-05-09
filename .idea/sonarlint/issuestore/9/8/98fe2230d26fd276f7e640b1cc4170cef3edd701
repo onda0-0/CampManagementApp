@@ -1,0 +1,24 @@
+
+¾
+java:S1186¤"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ƒÛ øJ$61cb35d0-d935-46b4-9af1-0baec0f7ab2f
+“
+java:S3776>"RRefactor this method to reduce its Cognitive Complexity from 36 to the 15 allowed.(É™ÙÈýÿÿÿÿJ$e41f103f-b1bb-4f7d-b51b-4d9592105243
+{
+java:S1854€">Remove this useless assignment to local variable "scoreGrade".(üÖøJ$cf33980a-504e-4f05-8c01-7bd948b91595
+€
+java:S1854‚">Remove this useless assignment to local variable "scoreGrade".(Ç¼ÅãúÿÿÿÿJ$da00a67d-e6c9-4c55-87b3-d310a85d82e0
+€
+java:S1854„">Remove this useless assignment to local variable "scoreGrade".(Ç„åÍùÿÿÿÿJ$d81476e3-f6de-45f4-bc74-86702c79f463
+€
+java:S1854†">Remove this useless assignment to local variable "scoreGrade".(Ìá‡ùúÿÿÿÿJ$3ed58c51-fe81-440a-8472-f738b8d92827
+{
+java:S1854ˆ">Remove this useless assignment to local variable "scoreGrade".(ÍèÛ¨J$7942aac7-c2e7-4cc2-96a9-ccc85d025463
+{
+java:S1854Š">Remove this useless assignment to local variable "scoreGrade".(Æ£ ÜJ$fc359742-5609-491b-ae08-7de8eded9741
+k	java:S106N"+Replace this use of System.out by a logger.(…©™ïþÿÿÿÿJ$ebdc102d-1e0d-426e-89db-8d1d922ea96a
+k	java:S106V"+Replace this use of System.out by a logger.(ÅòÆ€þÿÿÿÿJ$a7e32056-e282-4deb-93c9-a2177905ad68
+k	java:S106["+Replace this use of System.out by a logger.(ÅÑˆ—ùÿÿÿÿJ$c0384f77-30e2-4a1c-a6be-b4c87b83a46e
+k	java:S106v"+Replace this use of System.out by a logger.(®½ÃÜþÿÿÿÿJ$d4ee62f8-3c4b-455c-91a2-fcde1af4b05b
+r	java:S106y"+Replace this use of System.out by a logger.(’âÇÚüÿÿÿÿ8§Ø¥àõ1J$c079ed47-6f50-4741-ae9c-058ea50858ea
+r
+java:S1144¤"5Remove this unused private "displayScoreView" method.(ƒÛ øJ$66d2aaba-95a6-4a5a-810e-70434eabfeee

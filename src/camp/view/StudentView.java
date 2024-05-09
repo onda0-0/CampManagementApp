@@ -67,8 +67,7 @@ public class StudentView {
         consoleIO.print("\n수강생을 등록합니다...");
         String studentName = consoleIO.getStringInput("수강생 이름 입력: ");
         List<String> allSubjectNames = studentManager.selectSubjectNamesList();
-        String studentStatus=studentManager.getStatusInput();
-        studentManager.createStudent(studentName, allSubjectNames, studentStatus);
+        studentManager.createStudent(studentName, allSubjectNames);
         consoleIO.print("수강생 등록 성공!\n");
     }
 

@@ -2,7 +2,6 @@ package camp.view;
 
 import camp.utility.ConsoleIO;
 
-
 public class MainView {
     private StudentView studentView;
     private ScoreView scoreView;
@@ -30,6 +29,8 @@ public class MainView {
                     break;
                 case 2:
                     // 점수관리 뷰 로직
+                    scoreView.handleScoreMenu(); // 점수 관리 메뉴
+
                     break;
                 case 3:
                     flag = false;
@@ -46,4 +47,5 @@ public class MainView {
             }
         }
     }
+
 }

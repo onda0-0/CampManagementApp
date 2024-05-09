@@ -1,5 +1,6 @@
 package camp.view;
 
+
 import camp.service.StudentManager;
 import camp.utility.ConsoleIO;
 
@@ -10,6 +11,7 @@ import camp.utility.ConsoleIO;
 
 import java.util.ArrayList;
 import java.util.List;
+
 
 
 public class StudentView {
@@ -69,8 +71,6 @@ public class StudentView {
         studentManager.createStudent(studentName, allSubjectNames, studentStatus);
         consoleIO.print("수강생 등록 성공!\n");
     }
-
-
 
 
 }

@@ -38,7 +38,7 @@ public class StudentView {
                     displayStudents();  // 수강생 조회 로직
                     break;
                 case 3:
-                    // 수강생 정보 검색 로직
+                    searchAndDisplayStudent(); // 수강생 정보 검색 로직
                     break;
                 case 4:
                     running = false; // 수강생 관리 반복 로직 탈출
@@ -93,6 +93,8 @@ public class StudentView {
             });
         }
     }
+
+    // 상태별 수강생 목록 조회 메서드
     private void displayStudentsByStatus() {
         boolean running = true;
         while (running) {
@@ -105,7 +107,7 @@ public class StudentView {
 
             int choice = consoleIO.getIntInput("조회 항목을 선택하세요:");
             if (choice == 5) {
-                running = false;  //  상태별 수강생 조회 반복 로직 탈출
+                running = false;  // 수강생 조회 로직 탈출
             } else {
                 String status;
                 switch (choice) {
@@ -138,10 +140,24 @@ public class StudentView {
                             consoleIO.print(studentInfo);
                         });
                     }
-                    running = false; // 상태 선택 로직 탈출
+                    running = false; // 수강생 조회 로직 탈출
                 }
             }
         }
     }
+    // 수강생 정보 검색 로직
+    private void searchAndDisplayStudent() {
+        String studentId = consoleIO.getStringInput("조회할 수강생의 ID를 입력하세요: ");
+        studentManager.getStudentById(studentId)
+                // Optional 의 ifPresentOrElse 사용 :Optional 객체에 값이 존재하는 경우와 그렇지 않은 경우에 대해 각각 다른 로직을 실행
+                .ifPresentOrElse(
+                        student -> {
+                            consoleIO.print(student.toString()); // 수강생 정보 출력
+                             // 수강생 정보 관리 옵션 메서드
+                        },
+                        () -> consoleIO.print("해당 ID의 수강생을 찾을 수 없습니다.") // 수강생 id 가 존재하지 않을경우
+                );
+    }
+
 
 }

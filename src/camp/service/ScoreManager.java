@@ -20,6 +20,7 @@ public class ScoreManager {
         this.studentStore = studentStore;
         this.consoleIO = consoleIO;
     }
+
     //김현성 2024.05.07수정
     // 수강생의 과목별 회차 점수 수정
     public void updateRoundScoreBySubject(String studentId, String subjectId){
@@ -75,4 +76,5 @@ public class ScoreManager {
             System.out.println("---취소를 선택하셨습니다. 삭제를 취소합니다.---");
         }
     }
+
 }

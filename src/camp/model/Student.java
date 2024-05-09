@@ -8,10 +8,11 @@ public class Student {
     private String studentStatus;
     private final List<String> subjectNames;
 
-    public Student(String studentId, String studentName, List<String> subjectNames) {
+
+    public Student(String studentId, String studentName, List<String> subjectNames,String studentStatus) {
         this.studentId = studentId;
         this.studentName = studentName;
-        this.studentStatus = "Unknown";  // 기본 상태
+        this.studentStatus = studentStatus;
         this.subjectNames = subjectNames;
     }
 
@@ -25,4 +26,26 @@ public class Student {
                 ", subjectNames=" + subjectNames +
                 '}';
     }
+    public String getStudentId(){
+        return studentId;
+    }
+    public String getStudentStatus() {
+        return studentStatus;
+    }
+
+    public List<String> getSubjectNames() {
+        return subjectNames;
+    }
+
+
+    //Setter
+
+    public void setStudentName(String studentName) {
+        this.studentName = studentName;
+    }
+
+    public void setStudentStatus(String studentStatus) {
+        this.studentStatus = studentStatus;
+    }
+
 }

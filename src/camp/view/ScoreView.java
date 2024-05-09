@@ -44,7 +44,6 @@ public class ScoreView {
     }
 
 
-
     private void displayScoreView() {
 
     }

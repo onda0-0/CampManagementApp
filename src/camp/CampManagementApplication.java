@@ -21,7 +21,7 @@ public class CampManagementApplication {
         ConsoleIO consoleIO = new ConsoleIO();//입력관련 간단하게 함수로 구현
         IdSequenceGenerator idGenerator = new IdSequenceGenerator();//id 증가 관련 함수
 
-        //수강생,과목,점수 저장소 리스트
+        //수강생,과목,점수 저장소 리스트2
 
         List<Student> studentStore = DataInitializer.initializeStudents(idGenerator);
         List<Subject> subjectStore = DataInitializer.initializeSubjects(idGenerator);

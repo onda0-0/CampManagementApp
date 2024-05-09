@@ -20,7 +20,9 @@ public class ScoreManager {
         this.studentStore = studentStore;
         this.consoleIO = consoleIO;
     }
-
+    public List<Student> getStudentStore() {return studentStore;}
+    public List<Subject> getSubjectStore() {return subjectStore;}
+    public List<Score> getScoreStore() {return scoreStore;}
     //김현성 2024.05.07수정
     // 수강생의 과목별 회차 점수 수정
     public void updateRoundScoreBySubject(){
@@ -61,6 +63,143 @@ public class ScoreManager {
             consoleIO.print("해당 정보를 찾지 못해 수정하지 못했습니다.");
         }
     }
+    public char makeScoreGrade(String subjectType, int score) {
+        char grade = 'N';
+        if (subjectType.equals("MANDATORY")) {
+            if (score >= 95)
+                grade = 'A';
+            else if (score >= 90)
+                grade = 'B';
+            else if (score >= 80)
+                grade = 'C';
+            else if (score >= 70)
+                grade = 'D';
+            else if (score >= 60)
+                grade = 'F';
+            else
+                grade = 'N';
+        } else if (subjectType.equals("CHOICE")) {
+            if (score >= 90)
+                grade = 'A';
+            else if (score >= 80)
+                grade = 'B';
+            else if (score >= 70)
+                grade = 'C';
+            else if (score >= 60)
+                grade = 'E';
+            else if (score >= 50)
+                grade = 'F';
+            else
+                grade = 'N';
+        }
+        return grade;
+    }
+
+
+    // 수강생의 과목별 시험 회차 및 점수 등록
+    public void createScore() {
+        String studentId = consoleIO.getStringInput("관리 할 수강생의 ID를 입력하세요"); // 관리할 수강생 고유 번호
+        consoleIO.print("시험 점수를 등록합니다...");
+        // 기능 구현
+
+
+        Student selectedStudent = null;
+
+
+        for (Student student : getStudentStore() ) {
+            if (student.getStudentId().equals(studentId)) {
+                selectedStudent = student;
+                break;
+            }
+        }
+        if (selectedStudent == null) {
+            System.out.println("다시 확인해주세요");
+            return;
+        }
+
+
+        consoleIO.print("등록할 과목을 선택하세요:");
+        for (int i = 0; i < getSubjectStore().size(); i++) {
+            Subject subject = getSubjectStore().get(i);
+            System.out.println(i + 1 + ". " + subject.getSubjectName());
+        }
+
+        int selectedIndex = consoleIO.getIntInput("과목번호를 입력하세요");
+        if (selectedIndex < 0 || selectedIndex > getSubjectStore().size()) {
+            System.out.println("잘못된 과목 번호입니다.");
+            return;
+        }
+        Subject selectedSubject = getSubjectStore().get(selectedIndex);
+
+
+
+        int iteration = consoleIO.getIntInput("등록할 시험 회차를 입력하세요 (1회차부터 10회차까지 가능): ");
+        if (iteration < 1 || iteration > 10) {
+            consoleIO.print("잘못된 회차입니다.");
+            return;
+        }
+
+        // 이미 회차에 점수가 등록되어 있는지 확인
+        boolean iterationExit = false;
+        for (Score testscore : getScoreStore()) {
+            if (testscore.returnFindingStudentId().equals(studentId) && testscore.returnFindingSubjectId().equals(selectedSubject.getSubjectId()) && testscore.getIteration() == iteration) {
+                iterationExit = true;
+                break;
+            }
+        }
+        if (iterationExit) {
+            consoleIO.print("이미 해당 회차에 점수가 등록되어 있습니다.");
+            return;
+        }
+
+        int testsscore;
+        do{
+
+            testsscore =consoleIO.getIntInput("점수를 입력하세요:");
+            if (testsscore < 0 || testsscore > 100) {
+                System.out.println("올바른 점수를 입력해주세요");
+            }
+        } while (testsscore < 0 || testsscore > 100);
+
+//        char scoreGrade;
+//        if (selectedSubject.equals("Java") || selectedSubject.equals("객체지향") || selectedSubject.equals("Spring") || selectedSubject.equals("JPA") || selectedSubject.equals("MySQL")) {
+//            if (testsscore >= 95)
+//                scoreGrade = 'A';
+//            else if (testsscore >= 90)
+//                scoreGrade = 'B';
+//            else if (testsscore >= 80)
+//                scoreGrade = 'C';
+//            else if (testsscore >= 70)
+//                scoreGrade = 'D';
+//            else if (testsscore >= 60)
+//                scoreGrade = 'F';
+//            else
+//                scoreGrade = 'N';
+//        } else {
+//            if (testsscore >= 90)
+//                scoreGrade = 'A';
+//            else if (testsscore >= 80)
+//                scoreGrade = 'B';
+//            else if (testsscore >= 70)
+//                scoreGrade = 'C';
+//            else if (testsscore >= 60)
+//                scoreGrade = 'E';
+//            else if (testsscore >= 50)
+//                scoreGrade = 'F';
+//            else
+//                scoreGrade = 'N';
+
+        char scoreGrade = makeScoreGrade(selectedSubject.getSubjectType(), testsscore);
+
+
+        Score score = new Score(studentId, selectedSubject.getSubjectId(), iteration, testsscore, scoreGrade);
+        scoreStore.add(score);
+
+
+        consoleIO.print(selectedStudent.getStudentId()+"."+selectedStudent.getStudentName()+"님의"+iteration + "회차 " + selectedSubject.getSubjectName() + "시험 점수:" + testsscore + " 등급:" +scoreGrade + " 등록 완료");
+    }
+
+
 
     public void removeRoundScoreBySubject() {
         consoleIO.print("========점수 삭제=======");

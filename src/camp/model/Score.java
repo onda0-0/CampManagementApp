@@ -17,10 +17,12 @@ public class Score {
         this.grade = grade;
     }
 
-
     // Getter
     public int getScoreId(int inputA) {
         return inputA;
+    }
+    public int getIteration() {
+        return iteration;
     }
 
     // Setter

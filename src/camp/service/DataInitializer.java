@@ -111,12 +111,6 @@ public class DataInitializer {
 
     // 점수 데이터  ArrayList를 사용해 동적배열로 반환 (빈상태로 반환)
     public static List<Score> initializeScores() {
-        //   return new ArrayList<>();
-        List<Score> scores = new ArrayList<>();
-        scores.add(new Score("ST1", "SU1", 1, 92, 'B'));
-        scores.add(new Score("ST2", "SU1", 1, 85, 'C'));
-        scores.add(new Score("ST2", "SU2", 1, 100, 'A'));
-        scores.add(new Score("ST2", "SU2", 2, 100, 'A'));
-        return scores;
+        return new ArrayList<>();
     }
 }

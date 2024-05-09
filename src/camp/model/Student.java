@@ -29,6 +29,9 @@ public class Student {
         this.studentName = studentName;
     }
 
+    public void setStudentStatus(String studentStatus) {
+        this.studentStatus = studentStatus;
+    }
 
     // toString() 메서드는 객체의 상태를 문자열로 표현하는 것과 직접적으로 관련된 메서드이기 때문에, 객체의 내부 상태를 가장 잘 알고 있는 모델 클래스에 위치
     @Override

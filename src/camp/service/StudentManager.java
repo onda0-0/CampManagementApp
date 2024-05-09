@@ -50,4 +50,10 @@ public class StudentManager {
         student.setStudentName(newName);
         consoleIO.print("수강생 이름이 성공적으로 업데이트되었습니다.");
     }
+
+    // 수강생의 상태를 업데이트하는 메서드
+    public void updateStudentStatus(Student student, String newStatus) {
+        student.setStudentStatus(newStatus);
+        consoleIO.print("수강생 이름이 성공적으로 업데이트되었습니다.");
+    }
 }

@@ -177,7 +177,7 @@ public class StudentView {
                     updateStudentName(student); // 수강생 이름 수정 메서드
                     break;
                 case 2:
-                     // 수강생 상태 수정 메서드
+                    updateStudentStatus(student); // 수강생 상태 수정 메서드
                     break;
                 case 3:
                     // 수강생 삭제 메서드
@@ -199,6 +199,12 @@ public class StudentView {
         consoleIO.print("수강생 이름이 업데이트되었습니다.");
     }
 
+    // 수강생 상태를 업데이트하는 메서드
+    private void updateStudentStatus(Student student) {
+        String newStatus = consoleIO.getStringInput("새로운 상태를 입력하세요:");
+        studentManager.updateStudentStatus(student, newStatus);
+        consoleIO.print("수강생 상태가 업데이트되었습니다.");
+    }
 
 
 

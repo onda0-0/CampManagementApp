@@ -60,7 +60,7 @@ public class ScoreManager {
     public void removeRoundScoreBySubject() {
         String studentId = consoleIO.getStringInput("수강생의 고유 번호를 입력하세요 : ");
         String subjectId = consoleIO.getStringInput("과목의 고유 번호를 입력하세요 : ");
-        int scoreId = consoleIO.getIntInput("수정 할 회차 입력 : ");
+        int scoreId = consoleIO.getIntInput("삭제 할 회차 입력 : ");
         // 기능 구현 (삭제 할 과목 및 회차, 점수)
         String removeCheck = consoleIO.getStringInput("해당 학생의 과목별 시험점수를 삭제하시겠습니까?(y/n) : ");
         if(removeCheck.equals("y") || removeCheck.equals("Y") ){

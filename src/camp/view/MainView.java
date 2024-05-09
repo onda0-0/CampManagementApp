@@ -26,6 +26,7 @@ public class MainView {
             switch (input) {
                 case 1:
                     // 수험색 뷰 로직
+                    studentView.handleStudentMenu();
                     break;
                 case 2:
                     // 점수관리 뷰 로직

@@ -27,6 +27,9 @@ public class Score {
     public void modifiScore(int testScore) {
         this.score = testScore;
     }
+    public void modifiGrade(char grade){
+        this.score = grade;
+    }
 
     public String returnFindingStudentId(){
         return this.studentId;

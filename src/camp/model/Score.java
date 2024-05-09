@@ -31,5 +31,8 @@ public class Score {
     public String getSubjectId() {
         return subjectId;
     }
+    public int getTestScore(){
+        return testScore;
+    }
 
 }

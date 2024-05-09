@@ -1,26 +1,18 @@
 package camp.model;
 
-import java.util.ArrayList;
-
 public class Score {
-    //과목 고유 번호
-    private String subjectId;
-    //수강생 고유 번호
     private String studentId;
+    private String subjectId;
+    private int iteration; //회차
+    private int score; //점수
+    private String grade; //등급
 
-    //점수 ( 0 ~ 100 )
-    private int testScore;
-    //점수 고유 번호 = 인덱스 = 회차 1~10
-    private int scoreId;
-    //등급 (A,B,C,D,E,F,N)
-    private char testRate;
-
-
-    public Score(String studentId, String subjectId, int testScore, int scoreId) {
+    public Score(String studentId, String subjectId, int iteration, int score, String grade) {
         this.studentId = studentId;
         this.subjectId = subjectId;
-        this.testScore = testScore;
-        this.scoreId = scoreId;
+        this.iteration = iteration;
+        this.score = score;
+        this.grade = grade;
     }
 
     // Getter
@@ -30,7 +22,7 @@ public class Score {
 
     // Setter
     public void modifiScore(int testScore) {
-        this.testScore = testScore;
+        this.score = testScore;
     }
 
     public String returnFindingStudentId(){
@@ -40,11 +32,10 @@ public class Score {
         return this.subjectId;
     }
     public int returnFindingTestScore(){
-        return this.testScore;
+        return this.score;
     }
     public int returnFindingScoreId(){
-        return this.scoreId;
+        return this.iteration;
     }
-
 
 }

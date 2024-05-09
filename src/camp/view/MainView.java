@@ -28,7 +28,7 @@ public class MainView {
                     studentView.handleStudentMenu();
                     break;
                 case 2:
-                    // 점수 관리  로직
+                    scoreView.handleScoreMenu(); // 점수 관리 메뉴
                     break;
                 case 3:
                     flag = false;
@@ -45,4 +45,5 @@ public class MainView {
             }
         }
     }
+
 }

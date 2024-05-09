@@ -1,14 +1,14 @@
 package camp.view;
-
-
-import camp.model.Student;
 import camp.service.StudentManager;
 import camp.utility.ConsoleIO;
-
+import camp.model.Student;
 import java.util.List;
 
 
+
 public class StudentView {
+
+
     // 필드
     private StudentManager studentManager; // 수강생 관리 객체
     private ConsoleIO consoleIO; // 입출력 유틸리티 객체
@@ -32,7 +32,7 @@ public class StudentView {
             int choice = consoleIO.getIntInput("관리 항목을 선택하세요...");
             switch (choice) {
                 case 1:
-                    // 수강생 생성 로직
+                    createStudentProcess(); // 수강생 등록 로직
                     break;
                 case 2:
                     displayStudents();  // 수강생 조회 로직
@@ -50,6 +50,15 @@ public class StudentView {
         }
     }
 
+    // 수강생 등록 로직
+    private void createStudentProcess() {
+        consoleIO.print("\n수강생을 등록합니다...");
+        String studentName = consoleIO.getStringInput("수강생 이름 입력: ");
+        List<String> allSubjectNames = studentManager.selectSubjectNamesList();
+        studentManager.createStudent(studentName, allSubjectNames);
+        consoleIO.print("수강생 등록 성공!\n");
+    }
+
 
     // 수강생 조회 로직
     private void displayStudents() {
@@ -63,7 +72,7 @@ public class StudentView {
             int choice = consoleIO.getIntInput("조회 항목을 선택하세요:");
             switch (choice) {
                 case 1:
-                    displayAllStudents() ;// 전체 수강생 목록 조회 메서드 호출
+                    displayAllStudents();// 전체 수강생 목록 조회 메서드 호출
                     running = false; // 메서드 호출 후 수강생 조회 로직 반복 로직 탈출
                     break;
                 case 2:
@@ -82,7 +91,7 @@ public class StudentView {
 
     // 전체 수강생 목록 조회 메서드
     private void displayAllStudents() {
-        List<Student> students =   studentManager.getAllStudents();
+        List<Student> students = studentManager.getAllStudents();
         if (students.isEmpty()) {
             consoleIO.print("등록된 수강생이 없습니다.");
         } else {
@@ -214,5 +223,8 @@ public class StudentView {
     }
 
 
-
 }
+
+
+
+

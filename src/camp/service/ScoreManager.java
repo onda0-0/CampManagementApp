@@ -78,6 +78,8 @@ public class ScoreManager {
     }
 
 
+
+
     // 수강생의 특정 과목 회차별 등급 조회
     public void inquireRoundGradeBySubject() {
         String studentId = consoleIO.getStringInput("\n관리할 수강생의 번호를 입력하시오..."); // 관리할 수강생 고유 번호

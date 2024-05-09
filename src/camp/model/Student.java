@@ -8,10 +8,10 @@ public class Student {
     private String studentStatus;
     private final List<String> subjectNames;
 
-    public Student(String studentId, String studentName, List<String> subjectNames,String studentStatus) {
+    public Student(String studentId, String studentName, List<String> subjectNames) {
         this.studentId = studentId;
         this.studentName = studentName;
-        this.studentStatus = studentStatus;
+        this.studentStatus = "Unknown";
         this.subjectNames = subjectNames;
     }
 

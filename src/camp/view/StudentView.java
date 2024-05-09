@@ -180,7 +180,7 @@ public class StudentView {
                     updateStudentStatus(student); // 수강생 상태 수정 메서드
                     break;
                 case 3:
-                    // 수강생 삭제 메서드
+                    deleteStudent(student); // 수강생 삭제 메서드
                     break;
                 case 4:
                     running = false; // 옵션 메뉴 종료
@@ -204,6 +204,13 @@ public class StudentView {
         String newStatus = consoleIO.getStringInput("새로운 상태를 입력하세요:");
         studentManager.updateStudentStatus(student, newStatus);
         consoleIO.print("수강생 상태가 업데이트되었습니다.");
+    }
+
+
+    // 수강생 정보를 삭제하는 메서드
+    private void deleteStudent(Student student) {
+        studentManager.deleteStudent(student);
+        consoleIO.print("수강생 정보가 삭제되었습니다.");
     }
 
 

@@ -56,4 +56,13 @@ public class StudentManager {
         student.setStudentStatus(newStatus);
         consoleIO.print("수강생 이름이 성공적으로 업데이트되었습니다.");
     }
+
+    // 수강생을 삭제하는 메서드
+    public void deleteStudent(Student student) {
+        if (studentStore.remove(student)) {
+            consoleIO.print("수강생 정보가 성공적으로 삭제되었습니다.");
+        } else {
+            consoleIO.print("수강생 정보 삭제에 실패했습니다.");
+        }
+    }
 }

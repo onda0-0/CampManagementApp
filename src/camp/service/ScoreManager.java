@@ -23,60 +23,110 @@ public class ScoreManager {
 
     //김현성 2024.05.07수정
     // 수강생의 과목별 회차 점수 수정
-    public void updateRoundScoreBySubject(String studentId, String subjectId){
-        // 기능 구현 (수정할 과목 및 회차, 점수)
-        consoleIO.print("---시험 점수를 수정합니다...---");
-        // 기능 구현
+    public void updateRoundScoreBySubject(){
+        consoleIO.print("========점수 수정=======");
+        String studentId = consoleIO.getStringInput("수강생의 고유 번호를 입력하세요 : ");
+        String subjectId = consoleIO.getStringInput("과목의 고유 번호를 입력하세요 : ");
         int scoreId = consoleIO.getIntInput("수정 할 회차 입력 : ");
+        int findFlag = 0;
 
         if (scoreStore.isEmpty()){
             consoleIO.print("현재 어떤 정보 점수도 기록되어있지 않습니다.");
-        }
-        else {
-            for (Score findingScore : scoreStore){
-                if(findingScore.returnFindingStudentId().equals(studentId)){ //학생 고유번호가 같은걸 찾고
-                    if (findingScore.returnFindingScoreId() == scoreId){ //회자 번호가 같은걸 찾았다면
-                        consoleIO.print("해당하는 회자를 잦았습니다. 현재점수("+ findingScore.returnFindingTestScore()+"점)");
-                        int testScore = consoleIO.getIntInput("수정할 시험점수 입력( 0 ~ 100 ) : ");
-                        if(testScore >= 0 && testScore <= 100){
-                            findingScore.modifiScore(testScore); //class 안에있는 수정 method
-                        }
-                        else {
-                            consoleIO.print("---수정할 시험점수가 0~100사이의 정수가 아닙니다.---");
+        } else {
+            for (Score findingScore : scoreStore) {
+                if (findingScore.returnFindingStudentId().equals(studentId)) { //학생 고유번호가 같은걸 찾고
+                    if (findingScore.returnFindingSubjectId().equals(subjectId)) { // 과목 번호가 같은걸 찾고
+                        if (findingScore.returnFindingScoreId() == scoreId) { //회자 번호가 같은걸 찾았다면
+                            consoleIO.print("해당하는 회자를 잦았습니다. 현재점수(" + findingScore.returnFindingTestScore() + "점)");
+                            int score = consoleIO.getIntInput("수정할 시험점수 입력( 0 ~ 100 ) : ");
+                            if (score >= 0 && score <= 100) {
+                                findingScore.modifiScore(score); //class 안에있는 수정 method
+                                for (Subject subject : subjectStore) {
+                                    if (subject.getSubjectId().equals(subjectId)) {
+                                        findingScore.modifiGrade(makeScoreGrade(subject.getSubjectType(), score));
+                                        consoleIO.print("해당하는 "+subjectId+"학생의 "+subjectId+"과목의 "+scoreId+"회차 점수("+findingScore.getTestRate()+")로 수정했습니다.");
+                                        findFlag++;
+                                        break;
+                                    }
+                                }
+                            }else {
+                                consoleIO.print("---수정할 시험점수가 0~100사이의 정수가 아닙니다.---");
+                            }
                         }
                     }
-                    else{
-                        consoleIO.print("---해당되는 회차의 점수가 없습니다.---");
-                    }
-                }
-                else {
-                    consoleIO.print("---해당되는 학생 정보가 없습니다.---");
                 }
             }
         }
+        if (findFlag == 0){
+            consoleIO.print("해당 정보를 찾지 못해 수정하지 못했습니다.");
+        }
     }
 
-    public void removeRoundScoreBySubject(String studentId, String subjectId) {
+    public void removeRoundScoreBySubject() {
+        consoleIO.print("========점수 삭제=======");
+        String studentId = consoleIO.getStringInput("수강생의 고유 번호를 입력하세요 : ");
+        String subjectId = consoleIO.getStringInput("과목의 고유 번호를 입력하세요 : ");
+        int scoreId = consoleIO.getIntInput("삭제 할 회차 입력 : ");
+        int findFlag = 0;
         // 기능 구현 (삭제 할 과목 및 회차, 점수)
-        String removeCheck = consoleIO.getStringInput("해당 학생의 과목별 시험점수를 삭제하시겠습니까?(y/n) : ");
+        String removeCheck = consoleIO.getStringInput("해당하는 "+subjectId+"학생의 "+subjectId+"과목의 "+scoreId+"회차 점수를 삭제하시겠습니까?(y/n) : ");
         if(removeCheck.equals("y") || removeCheck.equals("Y") ){
             for (Score findingScore : scoreStore){
                 if(findingScore.returnFindingStudentId().equals(studentId)) {
                     if(findingScore.returnFindingSubjectId().equals(subjectId)) {
-                        scoreStore.remove(findingScore);
-                        System.out.println("해당하는 학생의 과목 점수를 모두 삭제했습니다.");
-                    }
-                    else{
-                        System.out.println("해당하는 학생의 과목 점수가 없습니다.");
+                        if (findingScore.returnFindingScoreId() == scoreId){
+                            scoreStore.remove(findingScore);
+                            consoleIO.print("삭제 완료!");
+                            findFlag++;
+                            break;
+                        }
+                        else{
+                            consoleIO.print("해당하는 학생의 과목 점수가 없습니다.");
+                        }
                     }
                 }
             }
         }
         else{
-            System.out.println("---취소를 선택하셨습니다. 삭제를 취소합니다.---");
+            consoleIO.print("---취소를 선택하셨습니다. 삭제를 취소합니다.---");
+        }
+        if (findFlag == 0){
+            consoleIO.print("해당 정보를 찾지 못해 삭제하지 못했습니다.");
         }
     }
 
+
+    public char makeScoreGrade(String subjectType, int score) {
+        char grade = 'N';
+        if (subjectType.equals("MANDATORY")) {
+            if (score >= 95)
+                grade = 'A';
+            else if (score >= 90)
+                grade = 'B';
+            else if (score >= 80)
+                grade = 'C';
+            else if (score >= 70)
+                grade = 'D';
+            else if (score >= 60)
+                grade = 'F';
+            else
+                grade = 'N';
+        } else if (subjectType.equals("CHOICE")) {
+            if (score >= 90)
+                grade = 'A';
+            else if (score >= 80)
+                grade = 'B';
+            else if (score >= 70)
+                grade = 'C';
+            else if (score >= 60)
+                grade = 'E';
+            else if (score >= 50)
+                grade = 'F';
+            else
+                grade = 'N';
+        }
+        return grade;
+    }
 
 
 
@@ -153,6 +203,7 @@ public class ScoreManager {
     // 특정 상태 수강생들의 필수 과목 평균 등급을 조회
     public void inquireStatusAvgBySubject() {
         System.out.println("아직,,");
+
     }
 
 }

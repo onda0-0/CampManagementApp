@@ -1,14 +1,7 @@
 package camp.view;
 
-import camp.model.Score;
-import camp.model.Student;
-import camp.model.Subject;
 import camp.service.ScoreManager;
-import camp.service.StudentManager;
 import camp.utility.ConsoleIO;
-
-import java.util.ArrayList;
-import java.util.Scanner;
 
 public class ScoreView {
     private ScoreManager scoreManager;
@@ -42,8 +35,7 @@ public class ScoreView {
                 case 3 -> scoreManager.inquireRoundGradeBySubject(); // 수강생의 특정 과목 회차별 등급 조회
                 case 4 -> scoreManager.inquireAvgRateBySubject(); // 수강생의 과목별 평균 등급 조회
                 case 5 -> scoreManager.inquireStatusAvgBySubject(); // 특정 상태 수강생들의 필수 과목 평균 등급 조회
-                case 6 -> scoreManager.removeRoundScoreBySubject(consoleIO.getStringInput("수강생의 고유 번호를 입력하세요 : ")
-                        , consoleIO.getStringInput("과목의 고유 번호를 입력하세요 : ")); //수강생의 과목별 시험점수 삭제
+                case 6 -> scoreManager.removeRoundScoreBySubject(); //수강생의 과목별 시험점수 삭제
                 case 7 -> flag = false; // 메인 화면 이동
                 default -> {
                     consoleIO.print("잘못된 입력입니다.\n메인 화면 이동...");
@@ -54,11 +46,8 @@ public class ScoreView {
     }
 
 
-
+    private void displayScoreView() {
 
     }
 
-
-
-
-
+}

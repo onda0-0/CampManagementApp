@@ -23,7 +23,7 @@ public class CampManagementApplication {
 
         //수강생,과목,점수 저장소 리스트2
 
-        List<Student> studentStore = DataInitializer.initializeStudents();
+        List<Student> studentStore = DataInitializer.initializeStudents(idGenerator);
         List<Subject> subjectStore = DataInitializer.initializeSubjects(idGenerator);
         List<Score> scoreStore = DataInitializer.initializeScores();
 

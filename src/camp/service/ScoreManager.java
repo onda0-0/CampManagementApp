@@ -83,9 +83,10 @@ public class ScoreManager {
         }
     }
 
-    public char makeScoreGrade(String subjectType, int score){
-        char grade='N';
-        if (subjectType.equals("MANDATORY")){
+
+    public char makeScoreGrade(String subjectType, int score) {
+        char grade = 'N';
+        if (subjectType.equals("MANDATORY")) {
             if (score >= 95)
                 grade = 'A';
             else if (score >= 90)
@@ -113,6 +114,84 @@ public class ScoreManager {
                 grade = 'N';
         }
         return grade;
+    }
+
+
+
+    // 수강생의 특정 과목 회차별 등급 조회
+    public void inquireRoundGradeBySubject() {
+        String studentId = consoleIO.getStringInput("\n관리할 수강생의 번호를 입력하시오..."); // 관리할 수강생 고유 번호
+        String subjectId = consoleIO.getStringInput("\n조회하고 싶은 과목 번호을 입력하시오..."); // 조회할 과목 고유 번호
+        System.out.println("회차별 등급을 조회합니다...");
+        List<Score> filterScore = scoreStore.stream()
+                .filter(score -> score.returnFindingStudentId().equals(studentId) && score.returnFindingSubjectId().equals(subjectId))
+                .toList();
+
+        if(filterScore.isEmpty()){
+            System.out.println("조회할 정보가 없습니다.");
+        } else {
+            for(Score score : filterScore){
+                System.out.println(score.returnFindingScoreId() + "회차" + "등급: " + score.getTestRate());
+            }
+            System.out.println("\n등급 조회 성공!");
+        }
+    }
+    // 수강생의 과목별 평균 등급 조회
+    public void inquireAvgRateBySubject() {
+        String studentId = consoleIO.getStringInput("\n관리할 수강생의 번호를 입력하시오..."); // 관리할 수강생 고유 번호
+        String subjectId = consoleIO.getStringInput("\n조회하고 싶은 과목 번호을 입력하시오..."); // 조회할 과목 고유 번호
+        // 수강생의 과목별 평균 등급 조회
+        System.out.println("과목별 평균 등급을 조회합니다...");
+        double avgScore = scoreStore.stream().filter(score -> score.returnFindingStudentId().equals(studentId) && score.returnFindingSubjectId().equals(subjectId))
+                .mapToDouble(Score::returnFindingTestScore)
+                .average().getAsDouble();
+        // 과목 이름
+        subjectStore.stream().filter(name -> name.getSubjectId().equals(subjectId))
+                .forEach(f -> System.out.println(f.getSubjectName()));
+
+        // 과목 타입
+        for(Subject subject : subjectStore){
+            if(subject.getSubjectId().equals(subjectId)){
+                String subjectType = subject.getSubjectType();
+                if(subjectType.equals("MANDATORY")){
+                    if(avgScore>=95){
+                        System.out.println('A');
+                    }else if(avgScore>=90){
+                        System.out.println('B');
+                    }else if(avgScore>=80){
+                        System.out.println('C');
+                    }else if(avgScore>=70){
+                        System.out.println('D');
+                    }else if(avgScore>=60){
+                        System.out.println('F');
+                    }else if(avgScore<60){
+                        System.out.println('N');
+                    }
+                }
+                if(subjectType.equals("CHOICE")) {
+                    if (avgScore >= 90) {
+                        System.out.println('A');
+                    } else if (avgScore >= 80) {
+                        System.out.println('B');
+                    } else if (avgScore >= 70) {
+                        System.out.println('C');
+                    } else if (avgScore >= 60) {
+                        System.out.println('D');
+                    } else if (avgScore >= 50) {
+                        System.out.println('F');
+                    } else if (avgScore < 50) {
+                        System.out.println('N');
+                    }
+                }
+            }
+        }
+        System.out.println("\n평균 등급 조회 성공!");
+
+    }
+    // 특정 상태 수강생들의 필수 과목 평균 등급을 조회
+    public void inquireStatusAvgBySubject() {
+        System.out.println("아직,,");
+
     }
 
 }

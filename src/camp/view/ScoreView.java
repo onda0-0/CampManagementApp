@@ -30,8 +30,8 @@ public class ScoreView {
 
             switch (input) {
                 case 1 -> scoreManager.createScore(); // 수강생의 과목별 시험 회차 및 점수 등록
-                case 2 -> scoreManager.updateRoundScoreBySubject(consoleIO.getStringInput("수강생의 고유 번호를 입력하세요 : ")
-                        , consoleIO.getStringInput("과목의 고유 번호를 입력하세요 : ")); // 수강생의 과목별 회차 점수 수정
+                case 2 -> scoreManager.updateRoundScoreBySubject();
+                         // 수강생의 과목별 회차 점수 수정
                 case 3 -> scoreManager.inquireRoundGradeBySubject(); // 수강생의 특정 과목 회차별 등급 조회
                 case 4 -> scoreManager.inquireAvgRateBySubject(); // 수강생의 과목별 평균 등급 조회
                 case 5 -> scoreManager.inquireStatusAvgBySubject(); // 특정 상태 수강생들의 필수 과목 평균 등급 조회

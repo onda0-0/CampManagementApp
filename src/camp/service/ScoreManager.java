@@ -46,7 +46,7 @@ public class ScoreManager {
                                 for (Subject subject : subjectStore) {
                                     if (subject.getSubjectId().equals(subjectId)) {
                                         findingScore.modifiGrade(makeScoreGrade(subject.getSubjectType(), score));
-                                        consoleIO.print("해당하는 "+subjectId+"학생의 "+subjectId+"과목의 "+scoreId+"회차 점수("+findingScore.getTestRate()+")로 수정했습니다.");
+                                        consoleIO.print("해당하는 "+studentId+"학생의 "+subjectId+"과목의 "+scoreId+"회차 점수("+findingScore.getTestRate()+")로 수정했습니다.");
                                         findFlag++;
                                         break;
                                     }
@@ -149,7 +149,7 @@ public class ScoreManager {
         int scoreId = consoleIO.getIntInput("삭제 할 회차 입력 : ");
         int findFlag = 0;
         // 기능 구현 (삭제 할 과목 및 회차, 점수)
-        String removeCheck = consoleIO.getStringInput("해당하는 "+subjectId+"학생의 "+subjectId+"과목의 "+scoreId+"회차 점수를 삭제하시겠습니까?(y/n) : ");
+        String removeCheck = consoleIO.getStringInput("해당하는 "+studentId+"학생의 "+subjectId+"과목의 "+scoreId+"회차 점수를 삭제하시겠습니까?(y/n) : ");
         if(removeCheck.equals("y") || removeCheck.equals("Y") ){
             for (Score findingScore : scoreStore){
                 if(findingScore.returnFindingStudentId().equals(studentId)) {

@@ -63,37 +63,7 @@ public class ScoreManager {
             consoleIO.print("해당 정보를 찾지 못해 수정하지 못했습니다.");
         }
     }
-    public char makeScoreGrade(String subjectType, int score) {
-        char grade = 'N';
-        if (subjectType.equals("MANDATORY")) {
-            if (score >= 95)
-                grade = 'A';
-            else if (score >= 90)
-                grade = 'B';
-            else if (score >= 80)
-                grade = 'C';
-            else if (score >= 70)
-                grade = 'D';
-            else if (score >= 60)
-                grade = 'F';
-            else
-                grade = 'N';
-        } else if (subjectType.equals("CHOICE")) {
-            if (score >= 90)
-                grade = 'A';
-            else if (score >= 80)
-                grade = 'B';
-            else if (score >= 70)
-                grade = 'C';
-            else if (score >= 60)
-                grade = 'E';
-            else if (score >= 50)
-                grade = 'F';
-            else
-                grade = 'N';
-        }
-        return grade;
-    }
+
 
 
     // 수강생의 과목별 시험 회차 및 점수 등록
@@ -129,7 +99,7 @@ public class ScoreManager {
             System.out.println("잘못된 과목 번호입니다.");
             return;
         }
-        Subject selectedSubject = getSubjectStore().get(selectedIndex);
+        Subject selectedSubject = getSubjectStore().get(selectedIndex - 1);
 
 
 
@@ -154,40 +124,11 @@ public class ScoreManager {
 
         int testsscore;
         do{
-
             testsscore =consoleIO.getIntInput("점수를 입력하세요:");
             if (testsscore < 0 || testsscore > 100) {
                 System.out.println("올바른 점수를 입력해주세요");
             }
         } while (testsscore < 0 || testsscore > 100);
-
-//        char scoreGrade;
-//        if (selectedSubject.equals("Java") || selectedSubject.equals("객체지향") || selectedSubject.equals("Spring") || selectedSubject.equals("JPA") || selectedSubject.equals("MySQL")) {
-//            if (testsscore >= 95)
-//                scoreGrade = 'A';
-//            else if (testsscore >= 90)
-//                scoreGrade = 'B';
-//            else if (testsscore >= 80)
-//                scoreGrade = 'C';
-//            else if (testsscore >= 70)
-//                scoreGrade = 'D';
-//            else if (testsscore >= 60)
-//                scoreGrade = 'F';
-//            else
-//                scoreGrade = 'N';
-//        } else {
-//            if (testsscore >= 90)
-//                scoreGrade = 'A';
-//            else if (testsscore >= 80)
-//                scoreGrade = 'B';
-//            else if (testsscore >= 70)
-//                scoreGrade = 'C';
-//            else if (testsscore >= 60)
-//                scoreGrade = 'E';
-//            else if (testsscore >= 50)
-//                scoreGrade = 'F';
-//            else
-//                scoreGrade = 'N';
 
         char scoreGrade = makeScoreGrade(selectedSubject.getSubjectType(), testsscore);
 

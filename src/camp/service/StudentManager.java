@@ -107,21 +107,15 @@ public class StudentManager {
     // 수강생의 이름을 업데이트하는 메서드
     public void updateStudentName(Student student, String newName) {
         student.setStudentName(newName);
-        consoleIO.print("수강생 이름이 성공적으로 업데이트되었습니다.");
     }
 
     // 수강생의 상태를 업데이트하는 메서드
     public void updateStudentStatus(Student student, String newStatus) {
         student.setStudentStatus(newStatus);
-        consoleIO.print("수강생 이름이 성공적으로 업데이트되었습니다.");
     }
 
     // 수강생을 삭제하는 메서드
     public void deleteStudent(Student student) {
-        if (studentStore.remove(student)) {
-            consoleIO.print("수강생 정보가 성공적으로 삭제되었습니다.");
-        } else {
-            consoleIO.print("수강생 정보 삭제에 실패했습니다.");
-        }
+        studentStore.remove(student);
     }
 }

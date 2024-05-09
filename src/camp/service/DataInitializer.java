@@ -67,7 +67,7 @@ public class DataInitializer {
     // 학생 데이터 초기화
     public static List<Student> initializeStudents() {
         List<Student> students = new ArrayList<>();
-        students.add(new Student("ST1", "홍길동", List.of("Java", "객체지향","Spring", "MySQL")));
+        students.add(new Student("ST3", "홍길동", List.of("Java", "객체지향","Spring", "MySQL")));
         students.add(new Student("ST2", "이순신", List.of("Java", "객체지향","Spring", "JPA", "Redis")));
         return students;
     }
@@ -75,10 +75,10 @@ public class DataInitializer {
     // 점수 데이터 초기화
     public static List<Score> initializeScores() {
         List<Score> scores = new ArrayList<>();
-        scores.add(new Score("ST1", "SU1", 1, 92, null));
-        scores.add(new Score("ST2", "SU1", 1, 85, null));
-        scores.add(new Score("ST2", "SU2", 1, 100, null));
-        scores.add(new Score("ST2", "SU2", 2, 100, null));
+        scores.add(new Score("ST2", "SU1", 1, 92, null));
+        scores.add(new Score("ST3", "SU1", 1, 85, null));
+        scores.add(new Score("ST3", "SU2", 1, 100, null));
+        scores.add(new Score("ST3", "SU2", 2, 100, null));
         return scores;
     }
 }

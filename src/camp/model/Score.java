@@ -6,21 +6,18 @@ public class Score {
 
     private int iteration; //회차
     private int score; //점수
-
-    public int getIteration() {
-        return iteration;
-    }
-
-    private String grade; //등급
+    private char grade; //등급  //하은-char로 변경
 
 
-    public Score(String studentId, String subjectId, int iteration, int score, String grade) {
+
+    public Score(String studentId, String subjectId, int iteration, int score, char grade) {
         this.studentId = studentId;
         this.subjectId = subjectId;
         this.iteration = iteration;
         this.score = score;
         this.grade = grade;
     }
+
 
 
     // Getter
@@ -35,6 +32,9 @@ public class Score {
 
     public String getStudentId() {
         return studentId;
+    }
+    public int getIteration() {
+        return iteration;
     }
 
     // Setter

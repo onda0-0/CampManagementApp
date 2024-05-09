@@ -145,6 +145,7 @@ public class StudentView {
             }
         }
     }
+
     // 수강생 정보 검색 로직
     private void searchAndDisplayStudent() {
         String studentId = consoleIO.getStringInput("조회할 수강생의 ID를 입력하세요: ");
@@ -159,7 +160,8 @@ public class StudentView {
                 );
     }
 
-    // 수강생 정보 관리 옵션 메서드
+
+    // 수강생 정보 관리 옵션 제공 메서드
     private void displayStudentInformation(Student student) {
         boolean running = true;
         while (running) {
@@ -167,21 +169,21 @@ public class StudentView {
             consoleIO.print("1. 수강생 이름 수정");
             consoleIO.print("2. 수강생 상태 수정");
             consoleIO.print("3. 수강생 삭제");
-            consoleIO.print("4. 수강생 관리 메뉴로 돌아가기");
+            consoleIO.print("4. 이전 메뉴로 돌아가기");
 
             int choice = consoleIO.getIntInput("옵션을 선택하세요:");
             switch (choice) {
                 case 1:
-                    // 수강생 이름 수정 메서드
+                    updateStudentName(student); // 수강생 이름 수정 메서드
                     break;
                 case 2:
-                   // 수강생 상태 수정 메서드
+                     // 수강생 상태 수정 메서드
                     break;
                 case 3:
                     // 수강생 삭제 메서드
                     break;
                 case 4:
-                    running = false; // 수강생 정보 관련 로직 탈출
+                    running = false; // 옵션 메뉴 종료
                     break;
                 default:
                     consoleIO.print("잘못된 입력입니다. 다시 시도하세요.");
@@ -189,6 +191,14 @@ public class StudentView {
             }
         }
     }
+
+    // 수강생 이름을 업데이트하는 메서드
+    private void updateStudentName(Student student) {
+        String newName = consoleIO.getStringInput("새로운 이름을 입력하세요:");
+        studentManager.updateStudentName(student, newName);
+        consoleIO.print("수강생 이름이 업데이트되었습니다.");
+    }
+
 
 
 

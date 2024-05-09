@@ -44,4 +44,10 @@ public class StudentManager {
                 .filter(student -> student.getStudentId().equals(studentId))
                 .findFirst();
     } // Optional객체를 사용해서 NUll값 반환 에러 방지
+
+    // 수강생의 이름을 업데이트하는 메서드
+    public void updateStudentName(Student student, String newName) {
+        student.setStudentName(newName);
+        consoleIO.print("수강생 이름이 성공적으로 업데이트되었습니다.");
+    }
 }

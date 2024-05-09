@@ -92,7 +92,7 @@ public class ScoreManager {
 
     // 수강생의 과목별 시험 회차 및 점수 등록
     public void createScore() {
-        String studentId = consoleIO.getStringInput("관리 할 수강생의 번호를 입력하세요"); // 관리할 수강생 고유 번호
+        String studentId = consoleIO.getStringInput("관리 할 수강생의 ID를 입력하세요"); // 관리할 수강생 고유 번호
         consoleIO.print("시험 점수를 등록합니다...");
         // 기능 구현
 
@@ -100,16 +100,16 @@ public class ScoreManager {
         Student selectedStudent = null;
 
 
-//        for (Student student : scoreManager.getStudentStore() ) {
-//            if (getStudentId().equals(studentId)) {
-//                selectedStudent = student;
-//                break;
-//            }
-//        }
-//        if (selectedStudent == null) {
-//            System.out.println("다시 확인해주세요");
-//            return;
-//        }
+        for (Student student : getStudentStore() ) {
+            if (student.getStudentId().equals(studentId)) {
+                selectedStudent = student;
+                break;
+            }
+        }
+        if (selectedStudent == null) {
+            System.out.println("다시 확인해주세요");
+            return;
+        }
 
 
         consoleIO.print("등록할 과목을 선택하세요:");
@@ -190,7 +190,7 @@ public class ScoreManager {
         scoreStore.add(score);
 
 
-        consoleIO.print(iteration + "회차 " + selectedSubject.getSubjectName() + "시험 점수:" + testsscore + " 등급:" +scoreGrade + " 등록 완료");
+        consoleIO.print(selectedStudent.getStudentId()+"."+selectedStudent.getStudentName()+"님의"+iteration + "회차 " + selectedSubject.getSubjectName() + "시험 점수:" + testsscore + " 등급:" +scoreGrade + " 등록 완료");
     }
 
 

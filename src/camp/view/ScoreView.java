@@ -205,11 +205,11 @@ public class ScoreView {
         }
 
 
-        double avgRate = scoreManager.inquireAvgRateBySubject(studentId, subjectId);
-        if (Double.isNaN(avgRate)) {
+        String grade = scoreManager.inquireAvgRateBySubject(studentId, subjectId);
+        if (grade.equals("N")) {
             consoleIO.print("해당 과목에 대한 평균 점수 정보가 없습니다.");
         } else {
-            consoleIO.print("과목의 평균 등급: " + avgRate);
+            consoleIO.print("과목의 평균 등급: " + grade);
         }
     }
 

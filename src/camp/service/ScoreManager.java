@@ -97,12 +97,23 @@ public class ScoreManager {
                 .collect(Collectors.toList());
     }
 
-    public double inquireAvgRateBySubject(String studentId, String subjectId) {
-        return scoreStore.stream()
+    public String inquireAvgRateBySubject(String studentId, String subjectId) {
+
+        double avgScore = scoreStore.stream()
                 .filter(score -> score.getStudentId().equals(studentId) && score.getSubjectId().equals(subjectId))
                 .mapToInt(Score::getScore)
                 .average()
                 .orElse(Double.NaN);
+
+
+        String subjectType = subjectStore.stream()
+                .filter(subject -> subject.getSubjectId().equals(subjectId))
+                .findFirst()
+                .map(Subject::getSubjectType)
+                .orElse("Unknown");
+
+
+        return determineGrade(subjectType, avgScore);
     }
 
     public Map<String, String> inquireStatusAvgBySubject(String status) {

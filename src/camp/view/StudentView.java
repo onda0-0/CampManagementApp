@@ -2,6 +2,7 @@ package camp.view;
 
 import camp.model.Subject;
 import camp.service.StudentManager;
+import camp.service.ScoreManager;
 import camp.utility.ConsoleIO;
 import camp.model.Student;
 
@@ -12,15 +13,18 @@ import java.util.List;
 public class StudentView {
 
     private final StudentManager studentManager;
+    private final ScoreManager scoreManager;
     private final ConsoleIO consoleIO;
     // 상수 필드(고정값)
     private static final String SUBJECT_TYPE_MANDATORY = "MANDATORY";// 필수 과목
     private static final String SUBJECT_TYPE_CHOICE = "CHOICE";//선택과목
-    public StudentView(StudentManager studentManager, ConsoleIO consoleIO) {
+
+    // 생성자
+    public StudentView(StudentManager studentManager, ScoreManager scoreManager, ConsoleIO consoleIO) {
         this.studentManager = studentManager;
+        this.scoreManager = scoreManager;
         this.consoleIO = consoleIO;
     }
-
     public void handleStudentMenu() {
         boolean running = true;
         while (running) {
@@ -250,6 +254,7 @@ public class StudentView {
         }
 
         if (confirm.equals("y")) {
+            scoreManager.removeScoresByStudentId(student.getStudentId());
             studentManager.deleteStudent(student);
             consoleIO.print("수강생 정보가 삭제되었습니다.");
         } else {

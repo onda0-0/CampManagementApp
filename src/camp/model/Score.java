@@ -47,20 +47,7 @@ public class Score {
     // Setter
 
 
-    public String returnFindingStudentId(){
-        return this.studentId;
-    }
-    public String returnFindingSubjectId(){
-        return this.subjectId;
-    }
-
-    public int returnFindingScoreId(){
-        return this.iteration;
-    }
-
-    public String getTestRate() {
+    public String getGrade() {
         return grade;
     }
-
-
 }

@@ -56,5 +56,6 @@ public class StudentManager {
 
     public void deleteStudent(Student student) {
         studentStore.remove(student);
+
     }
 }

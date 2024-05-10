@@ -30,11 +30,11 @@ public class CampManagementApplication {
 
         //수강생관리,점수관리
         StudentManager studentManager = new StudentManager(studentStore, subjectStore, idGenerator);
-        ScoreManager scoreManager = new ScoreManager(scoreStore, subjectStore, studentStore, consoleIO);
+        ScoreManager scoreManager = new ScoreManager(scoreStore, subjectStore, studentStore);
 
         //화면출력
 
-        StudentView studentView = new StudentView(studentManager, consoleIO);
+        StudentView studentView = new StudentView(studentManager, scoreManager,consoleIO);
         ScoreView scoreView = new ScoreView(scoreManager, consoleIO);
         MainView mainView = new MainView(studentView, scoreView, consoleIO);
 
